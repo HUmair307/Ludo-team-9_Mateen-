@@ -65,11 +65,11 @@ public:
 		
 
 		int c[10] = { 0,414,276,414,276,690,0,690,0,414};
-		setfillstyle(SOLID_FILL, 1);
+		setfillstyle(SOLID_FILL, 4);
 		fillpoly(5, c);
 
 		int d[10] = { 414,414,690,414,690,690,414,690,414,414 };
-		setfillstyle(SOLID_FILL, 4);
+		setfillstyle(SOLID_FILL, 1);
 		fillpoly(5, d);
 
 		int e[10] = { 276,276,414,276,414,414,276,414,276,276 };
