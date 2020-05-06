@@ -60,6 +60,18 @@
     <ClCompile Include="Dice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RedToken.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BlueToken.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GreenToken.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="YellowToken.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="winbgim.h">
@@ -93,6 +105,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Grid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RedToken.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BlueToken.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenToken.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="YellowToken.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
