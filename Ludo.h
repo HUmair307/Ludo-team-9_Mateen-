@@ -12,6 +12,7 @@ protected:
 	Player* Players;
 	//Player Players[MaxPlayers];
 	int NoOfPlayers, Turn, MaxNoSteps, WC;
+	int DU;
 
 public:
 	Ludo(){}
@@ -24,27 +25,41 @@ public:
 	Ludo(int NOP)
 	{
 		Players = new Player[NOP];
-		Grid = nullptr;
+		Grid = new char*;
+		Grid[0] = new char[100]; // How many total boxes are there? Please specify according to the NOP.
 	}
 
 	void UpdateBoard(Token T)
 	{
-
+		Grid[0][T.TokenLocationOnBoard] = '-';
+		Grid[0][T.TokenLocationOnBoard + Players[Turn].DICE.DiceNoAtIndex(DU)];
 	}
 
 	void ChangeTurn()
 	{
-
+		++Turn;
+		if (Turn == NoOfPlayers)
+			Turn = 0;
 	}
 
 	void DisplayPlayerMsg()
 	{
-
+		
 	}
 
 	void UpdatePlayerList(int Turn)
 	{
-
+		Player* NewPlayer = new Player[NoOfPlayers - WC]; // Provided WC has already been updated. Please take note
+		int z = 0;
+		for (int i = 0; i < NoOfPlayers - WC; i++)
+		{
+			if (i == Turn)
+				continue;
+			NewPlayer[z] = Players[i];
+			++z;
+		}
+		delete[]Players;
+		Players = NewPlayer;
 	}
 
 	void DisplayResult()
@@ -157,12 +172,15 @@ public:
 
 	bool isWin()
 	{
-		return true;
+		if (Players[Turn].TokkenReachedDest == 4)
+			return true;
+		else
+			return false;
 	}
 
 	void StartGame()
 	{
-
+		// Why do we need this function when we already have init..?
 	}
 
 	void init()
@@ -174,23 +192,27 @@ public:
 	{
 		init();
 		StartGame();
-		DisplayBoard();
-		DisplayPlayerMsg();
-		Players[Turn].RollaDice();
-		Players[Turn].ChoosingTokken();
-		Players[Turn].PlayingSelectedToken(tokenSelected);
-		UpdateBoard(tokenSelected);
-		Players[Turn].DrawToken();
-		if (isWin())
+		do
 		{
-			UpdatePlayerList(Turn);
-			WC++;
-		}
-		ChangeTurn();
-		while (WC < NoOfPlayers - 1)
-		{
-			DisplayResult();
-		}
+			DisplayBoard();
+			DisplayPlayerMsg();
+			Players[Turn].RollaDice();
+			Players[Turn].ChoosingTokken();
+			Players[Turn].PlayingSelectedToken(tokenSelected);
+			UpdateBoard(tokenSelected);
+			Players[Turn].DrawToken();
+			if (isWin())
+			{
+				WC++;
+				UpdatePlayerList(Turn);	
+			}
+			ChangeTurn();
+			if (WC == NoOfPlayers - 1)
+			{
+				DisplayResult();
+				break;
+			}
+		}while(true);
 
 	}
 
