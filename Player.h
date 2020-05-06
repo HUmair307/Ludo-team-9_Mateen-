@@ -11,7 +11,7 @@ protected:
 	//GrowA<int> DiceNo;    // growable array is template
 	Dice DICE;
 	Token tokenSelected;
-	char color;
+	COLOR color;
 	int InitialLocation;
 public:
 
@@ -19,7 +19,10 @@ public:
 	{
 
 	}
-	Player(Color c,int initiallocation){}
+	Player(Color c,int initiallocation):color(c),InitialLocation(initiallocation)
+	{
+		TokenArray = new Token[4];
+	}
 	
 
 	void PlayingSelectedToken(Token T)
