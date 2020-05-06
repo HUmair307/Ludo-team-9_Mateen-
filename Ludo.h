@@ -198,7 +198,7 @@ public:
 		{
 			DisplayBoard();
 			DisplayPlayerMsg();
-			Players[Turn].RollaDice();
+			Players[Turn].rolladice();
 			Players[Turn].ChoosingTokken();
 			Players[Turn].PlayingSelectedToken(tokenSelected);
 			UpdateBoard(tokenSelected);

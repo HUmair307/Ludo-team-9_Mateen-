@@ -7,10 +7,16 @@
 using namespace std;
 class Dice
 {
-	vector<int>diceno;
 public:
+	vector<int>diceno;
 	void reset();
 	void rolladice();
 	int randomgen();
+
+	int DiceNoAtIndex(int i)
+	{
+		return diceno[i];
+	}
+
 };
 
