@@ -67,12 +67,14 @@
     <ClCompile Include="Dice.cpp" />
     <ClCompile Include="drawing.cxx" />
     <ClCompile Include="file.cxx" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Ludo.cpp" />
     <ClCompile Include="misc.cxx" />
     <ClCompile Include="mouse.cxx" />
     <ClCompile Include="palette.cxx" />
     <ClCompile Include="main.cxx" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Position.cpp" />
     <ClCompile Include="text.cxx" />
     <ClCompile Include="Token.cpp" />
     <ClCompile Include="winbgi.cxx" />
@@ -82,8 +84,10 @@
     <ClInclude Include="dibutil.h" />
     <ClInclude Include="Dice.h" />
     <ClInclude Include="graphics.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="Ludo.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Position.h" />
     <ClInclude Include="Token.h" />
     <ClInclude Include="winbgi.h" />
     <ClInclude Include="winbgim.h" />
