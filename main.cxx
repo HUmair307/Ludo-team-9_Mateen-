@@ -401,9 +401,6 @@ using namespace std;
 //   return (int)y_value;
 //}
 
-
-
-
 int main()
 {
 	Ludo ludo;

@@ -4,6 +4,8 @@
 #include "Token.h"
 #include "Dice.h"
 #include "graphics.h"
+#include "Grid.h"
+#include "Position.h"
 using namespace std;
 class Ludo :public Player
 {
