@@ -19,7 +19,7 @@ public:
 	
 	void InitBoard()
 	{
-
+			// We don't really need this?
 	}
 
 	Ludo(int NOP)
@@ -44,7 +44,7 @@ public:
 
 	void DisplayPlayerMsg()
 	{
-		
+		// Where should we display the which player's turn is it right now?
 	}
 
 	void UpdatePlayerList(int Turn)
@@ -64,7 +64,7 @@ public:
 
 	void DisplayResult()
 	{
-
+		//Should we display "Player Blue Won"???? And at which place?
 	}
 
 	void DisplayBoard()
