@@ -27,7 +27,7 @@ public:
 	Ludo(int NOP)
 	{
 		Players = new Player[NOP];
-		Grid = new char*;
+		Grid = new char*[1];
 		Grid[0] = new char[100]; // How many total boxes are there? Please specify according to the NOP.
 	}
 
@@ -174,7 +174,7 @@ public:
 
 	bool isWin()
 	{
-		if (Players[Turn].TokkenReachedDest == 4)
+		if (Players[Turn].TokenReachDest==4)
 			return true;
 		else
 			return false;

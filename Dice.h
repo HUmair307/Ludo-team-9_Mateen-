@@ -6,6 +6,7 @@
 using namespace std;
 class Dice
 {
+public:
 
 	vector<int> DiceNo;
 
@@ -18,5 +19,12 @@ public:
 	void RollaDice()
 	{
 	}
+	int DiceNoAtIndex(int i)
+	{
+		return DiceNo[i];
+	}
+
+
+
 };
 
