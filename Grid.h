@@ -23,7 +23,16 @@ class Grid
   {
       return ((x >= TopLeft.x && x <= BottomRight.y) && (y >= TopLeft.x && y <= BottomRight.y));
   }
+  
+  Position getTopLeft()
+  {
+    return TopLeft;
+  }
     
-
+  Position getBottomRight()
+  {
+    return BottomRight;
+  }
+  
 };
 
