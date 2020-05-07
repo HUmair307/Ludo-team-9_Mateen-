@@ -64,6 +64,7 @@
   <ItemGroup>
     <ClCompile Include="bgiout.cxx" />
     <ClCompile Include="BlueToken.cpp" />
+    <ClCompile Include="Cell.cpp" />
     <ClCompile Include="dibutil.cxx" />
     <ClCompile Include="Dice.cpp" />
     <ClCompile Include="drawing.cxx" />
@@ -84,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BlueToken.h" />
+    <ClInclude Include="Cell.h" />
     <ClInclude Include="dibutil.h" />
     <ClInclude Include="Dice.h" />
     <ClInclude Include="graphics.h" />
