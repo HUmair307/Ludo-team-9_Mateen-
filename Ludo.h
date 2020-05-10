@@ -185,33 +185,60 @@ public:
 		int a1[10] = { 0+30,0+30,276-30,0+30,276-30,276-30,0+30,276-30,0+30,0+30 };
 		setfillstyle(SOLID_FILL, LIGHTGREEN);
 		fillpoly(5, a1);
-		
+		setfillstyle(SOLID_FILL, GREEN);
+		fillellipse(60, 60, 20, 20);
+		fillellipse(216, 60, 20, 20);
+		fillellipse(60, 216, 20, 20);
+		fillellipse(216, 216, 20, 20);
 
 		int b[10] = { 414,0,690,0,690,276,414,276,414,0 };
 		setfillstyle(SOLID_FILL, DARKGRAY);
 		fillpoly(5, b);
-		
+
+
 		int b1[10] = { 414+30,0+30,690-30,0+30,690-30,276-30,414+30,276-30,414+30,0+ 30};
 		setfillstyle(SOLID_FILL, LIGHTGRAY);
 		fillpoly(5, b1);
+		setfillstyle(SOLID_FILL, DARKGRAY);
 
+		fillellipse(474, 60, 20, 20);
+		fillellipse(630, 60, 20, 20);
+		fillellipse(474, 216, 20, 20);
+		fillellipse(630, 216, 20, 20);
 
 
 
 		int c[10] = { 0,414,276,414,276,690,0,690,0,414};
 		setfillstyle(SOLID_FILL, RED);
 		fillpoly(5, c);
+
+		
+		
 		int c1[10] = { 0+30,414+30,276-30,414+30,276-30,690-30,0+30,690-30,0+30,414+30 };
 		setfillstyle(SOLID_FILL, LIGHTRED);
 		fillpoly(5, c1);
+		setfillstyle(SOLID_FILL, RED);
+		fillellipse(216, 474, 20, 20);
+		fillellipse(216, 630, 20, 20);
+		fillellipse(60, 474, 20, 20);
+		fillellipse(60, 630, 20, 20);
 
 		int d[10] = { 414,414,690,414,690,690,414,690,414,414 };
 		setfillstyle(SOLID_FILL, BLUE);
 		fillpoly(5, d);
+
+
+
+
+
 		int d1[10] = { 414+30,414+30,690-30,414+30,690-30,690-30,414+30,690-30,414+30,414+30 };
 		setfillstyle(SOLID_FILL, LIGHTBLUE);
 		fillpoly(5, d1);
-
+		setfillstyle(SOLID_FILL, BLUE);
+		fillellipse(474, 474, 20, 20);
+		fillellipse(474, 630, 20, 20);
+		fillellipse(630, 474, 20, 20);
+		fillellipse(630, 630, 20, 20);
 		int T1[8] = {276,276,414,276,345,345,276,276 };
 		setfillstyle(SOLID_FILL, DARKGRAY);
 		fillpoly(4, T1);
@@ -229,31 +256,34 @@ public:
 
 
 
-									/*
+/*
+
+
 									BOX INDEX IN THE ARRAY. BETTER SEQUENCE CAN'T BE MAKE
-									==> Position of every box is saved ( TopLeft and ButtonRight + color) 
+									==> Position of every box is saved ( TopLeft and ButtonRight + color)
 									==> box with color are declared as safe spot and their position are saved
 									S===> SAFE SPOT, TOTAL BOXES===> 76
 											  YELLOW
-									          
-											  0 6  12 
+
+											  0 6  12
 											  1 7  13 S
-											S 2 8  14 
-											  3 9  15 
+											S 2 8  14
+											  3 9  15
 						G					  4 10 16
 						R		S			  5 11 17           S			B
 						E	36 37 38 39 40 41	 72	   18 19 20 21 22 23	L
 						E	42 43 44 45 46 47 75	73 24 25 26 27 28 29	U
 						N	48 49 50 51 52 53	 74	   30 31 32 33 34 35	E
-							      S           54 60 66             S
+								  S           54 60 66             S
 											  55 61 67
 											  56 62 68
 											  57 63 69 S
 											S 58 64 70
 											  59 65 71
-											  
+
 											  R  E  D
-									*/
+
+*/
 		cc = LIGHTCYAN;
 
 		// GRAY
