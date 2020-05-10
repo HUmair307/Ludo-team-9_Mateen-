@@ -283,18 +283,141 @@ public:
 
 											  R  E  D
 
-*/
+											  5 6 7
+											  4   8  52
+											  3   9  53
+											  2   10 54
+											  1   11 55
+											  0   12 56
+							46 47 48 49	50 51 	    13 14 15 16 17 18
+							45 71 7 69  68 67       61 60 59 58 57 19                    
+							44 43 42 41 40 39       25 24 23 22 21 20
+											38 62 26
+											37 63 27	
+											36 64 28
+											35 65 29
+											34 66 30
+                                            33 32 31
+													
+													*/
 		cc = LIGHTCYAN;
 
+		//// GRAY
+		//for (int x = 0,i=0; x < 138; x += 46,i++)
+		//{
+		//	for (int y = 0,k=0; y < 276; y += 46,k++)
+		//	{
+		//		int a[10] = { 276+x,0 + y,322 + x,0 + y,322 + x,46 + y,276 + x,46+y,276 + x,0+y };
+		//		if ((i == 0 && k == 2) || (i == 1 && k > 0) || (i == 2 && k == 1))
+		//		{
+		//			cc = DARKGRAY; C[NOC].Issave = true;
+		//		}
+		//		setfillstyle(SOLID_FILL, cc);
+		//		C[NOC].setcellPos(Position(276 + x, 0 + y), Position(322 + x, 46 + y), cc);
+		//		fillpoly(5, a);
+		//		setfillstyle(SOLID_FILL, LIGHTCYAN);
+		//		cc = LIGHTCYAN;
+		//		NOC++;
+		//	}
+		//}
+		////blue
+		//for (int y = 0, i = 0; y < 138; y += 46, i++)
+		//{
+		//	for (int x = 0, k = 0; x < 276; x += 46, k++)
+		//	{
+		//		int g[10] = { 414 + x,276 + y,460 + x,276 + y,460 + x,322 + y,414 + x,322 + y,414 + x,276 + y };
+
+		//		if ((i == 0 && k == 3) || (i == 1 && k < 5) || (i == 2 && k == 4))
+		//		{
+		//			cc = BLUE; C[NOC].Issave = true;
+		//		}
+		//		setfillstyle(SOLID_FILL, cc);
+		//		C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+		//		fillpoly(5, g);
+		//		setfillstyle(SOLID_FILL, LIGHTCYAN);
+		//		cc = LIGHTCYAN;
+		//		NOC++;
+		//	}
+		//}
+		////
+		////// GREEN
+		////
+
+		//for (int y = 0,i = 0; y < 138; y += 46,i++)
+		//{
+		//	for (int x = 0,k = 0; x < 276; x += 46,k++)
+		//	{
+		//		int g[10] = { 0 + x,276 + y,46 + x,276 + y,46 + x,322 + y,0 + x,322 + y,0 + x,276 + y };
+		//		if ((i == 0 && k == 1) || (i == 1 && k > 0) || (i == 2 && k == 2))
+		//		{
+		//			cc = GREEN; C[NOC].Issave = true;
+		//		}
+		//		setfillstyle(SOLID_FILL, cc);
+		//		C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+		//		fillpoly(5, g);
+		//		setfillstyle(SOLID_FILL, LIGHTCYAN);
+		//		cc = LIGHTCYAN;
+		//		NOC++;
+		//	}
+		//}
+		//////RED
+		//for (int x = 0, i = 0; x < 138; x += 46, i++)
+		//{
+		//	for (int y = 0, k = 0; y < 276; y += 46, k++)
+		//	{
+		//		int a[10] = { 276 + x,414 + y,322 + x,414 + y,322 + x,460 + y,276 + x,460 + y,276 + x,414 + y };
+		//		if ((i == 0 && k == 4) || (i == 1 && k < 5) || (i == 2 && k == 3))
+		//		{
+		//			cc = RED; C[NOC].Issave = true;
+		//		}
+		//		setfillstyle(SOLID_FILL, cc);
+		//		C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+		//		fillpoly(5, a);
+		//		setfillstyle(SOLID_FILL, LIGHTCYAN);
+		//		cc = LIGHTCYAN;
+		//		NOC++;
+		//	}
+		//}
+		//
+
+
+
+
+
+
 		// GRAY
-		for (int x = 0,i=0; x < 138; x += 46,i++)
+		NOC = 0;
+		int SBN = 52;
+		for (int y = 0, k = 0; y < 276; y += 46, k++)
+		{
+			int a[10] = { 276,230-y,322,230 - y,322,276 - y,276,276 - y,276,230 - y };
+			if (k==3)
+			{
+				cc = DARKGRAY; C[NOC].Issave = true;
+			}
+			setfillstyle(SOLID_FILL, cc);
+			C[NOC].setcellPos(Position(276 , 230 - y), Position(322, 276 - y), cc);
+			fillpoly(5, a);
+			setfillstyle(SOLID_FILL, LIGHTCYAN);
+			cc = LIGHTCYAN;
+			NOC++;
+		}
+		
+		for (int x = 46,i=1; x < 138; x += 46,i++)
 		{
 			for (int y = 0,k=0; y < 276; y += 46,k++)
 			{
 				int a[10] = { 276+x,0 + y,322 + x,0 + y,322 + x,46 + y,276 + x,46+y,276 + x,0+y };
-				if ((i == 0 && k == 2) || (i == 1 && k > 0) || (i == 2 && k == 1))
+				if ((i == 1 && k > 0))
 				{
-					cc = DARKGRAY; C[NOC].Issave = true;
+					cc = DARKGRAY; 
+					C[SBN].setcellPos(Position(276 + x, 0 + y), Position(322 + x, 46 + y), cc);
+					SBN++;
+
+				}
+				if ((i == 2 && k == 1))
+				{
+					cc = DARKGRAY;
 				}
 				setfillstyle(SOLID_FILL, cc);
 				C[NOC].setcellPos(Position(276 + x, 0 + y), Position(322 + x, 46 + y), cc);
@@ -304,14 +427,57 @@ public:
 				NOC++;
 			}
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+	
+		
+		
 		//blue
-		for (int y = 0, i = 0; y < 138; y += 46, i++)
+
+
+
+
+
+
+
+
+
+		
+		for (int x = 0, k = 0; x < 276; x += 46, k++)
 		{
-			for (int x = 0, k = 0; x < 276; x += 46, k++)
+			int g[10] = { 414 + x,276,460 + x,276,460 + x,322,414 + x,322,414 + x,276 };
+
+			if ( k == 3 )
+			{
+				cc = BLUE; C[NOC].Issave = true;
+			}
+			setfillstyle(SOLID_FILL, cc);
+			C[NOC].setcellPos(Position(276 + x, 414 ), Position(322 + x, 460), cc);
+			fillpoly(5, g);
+			setfillstyle(SOLID_FILL, LIGHTCYAN);
+			cc = LIGHTCYAN;
+			NOC++;
+		}
+		cc = LIGHTCYAN;
+		for (int y = 46, i = 1; y < 138; y += 46, i++)
+		{
+			for (int x = 230, k = 0; x >= 0; x -= 46, k++)
 			{
 				int g[10] = { 414 + x,276 + y,460 + x,276 + y,460 + x,322 + y,414 + x,322 + y,414 + x,276 + y };
 
-				if ((i == 0 && k == 3) || (i == 1 && k < 5) || (i == 2 && k == 4))
+				if ((i == 1 && k != 0))
+				{
+					cc = BLUE; C[SBN].Issave = true;
+					C[SBN].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+					SBN++;
+				}
+				if ((i == 2 && k == 1))
 				{
 					cc = BLUE; C[NOC].Issave = true;
 				}
@@ -323,46 +489,58 @@ public:
 				NOC++;
 			}
 		}
-		//
-		//// GREEN
-		//
 
-		for (int y = 0,i = 0; y < 138; y += 46,i++)
-		{
-			for (int x = 0,k = 0; x < 276; x += 46,k++)
-			{
-				int g[10] = { 0 + x,276 + y,46 + x,276 + y,46 + x,322 + y,0 + x,322 + y,0 + x,276 + y };
-				if ((i == 0 && k == 1) || (i == 1 && k > 0) || (i == 2 && k == 2))
-				{
-					cc = GREEN; C[NOC].Issave = true;
-				}
-				setfillstyle(SOLID_FILL, cc);
-				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-				fillpoly(5, g);
-				setfillstyle(SOLID_FILL, LIGHTCYAN);
-				cc = LIGHTCYAN;
-				NOC++;
-			}
-		}
-		////RED
-		for (int x = 0, i = 0; x < 138; x += 46, i++)
-		{
-			for (int y = 0, k = 0; y < 276; y += 46, k++)
-			{
-				int a[10] = { 276 + x,414 + y,322 + x,414 + y,322 + x,460 + y,276 + x,460 + y,276 + x,414 + y };
-				if ((i == 0 && k == 4) || (i == 1 && k < 5) || (i == 2 && k == 3))
-				{
-					cc = RED; C[NOC].Issave = true;
-				}
-				setfillstyle(SOLID_FILL, cc);
-				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-				fillpoly(5, a);
-				setfillstyle(SOLID_FILL, LIGHTCYAN);
-				cc = LIGHTCYAN;
-				NOC++;
-			}
-		}
-		
+
+		////
+		////// GREEN
+		////
+
+		//for (int y = 0, i = 0; y < 138; y += 46, i++)
+		//{
+		//	for (int x = 0, k = 0; x < 276; x += 46, k++)
+		//	{
+		//		int g[10] = { 0 + x,276 + y,46 + x,276 + y,46 + x,322 + y,0 + x,322 + y,0 + x,276 + y };
+		//		if ((i == 0 && k == 1) || (i == 1 && k > 0) || (i == 2 && k == 2))
+		//		{
+		//			cc = GREEN; C[NOC].Issave = true;
+		//		}
+		//		setfillstyle(SOLID_FILL, cc);
+		//		C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+		//		fillpoly(5, g);
+		//		setfillstyle(SOLID_FILL, LIGHTCYAN);
+		//		cc = LIGHTCYAN;
+		//		NOC++;
+		//	}
+		//}
+		//////RED
+		//for (int x = 0, i = 0; x < 138; x += 46, i++)
+		//{
+		//	for (int y = 0, k = 0; y < 276; y += 46, k++)
+		//	{
+		//		int a[10] = { 276 + x,414 + y,322 + x,414 + y,322 + x,460 + y,276 + x,460 + y,276 + x,414 + y };
+		//		if ((i == 0 && k == 4) || (i == 1 && k < 5) || (i == 2 && k == 3))
+		//		{
+		//			cc = RED; C[NOC].Issave = true;
+		//		}
+		//		setfillstyle(SOLID_FILL, cc);
+		//		C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+		//		fillpoly(5, a);
+		//		setfillstyle(SOLID_FILL, LIGHTCYAN);
+		//		cc = LIGHTCYAN;
+		//		NOC++;
+		//	}
+		//}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
