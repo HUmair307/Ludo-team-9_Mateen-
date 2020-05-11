@@ -10,8 +10,8 @@ using namespace std;
 class Ludo :public Player,public Cell
 {
 protected:
-	Token* Grid;
-	Player* Players;
+	Token** Grid;
+	Player** Players;
 	//Player Players[MaxPlayers];
 	int NoOfPlayers, Turn, MaxNoSteps, WC;
 	int DU;
@@ -130,18 +130,18 @@ public:
 			// yes we do not need it
 	}
 
-	Ludo(int NOP)
-	{
-		Players = new Player[NOP];
-		Grid = new char*[1];
-		Grid[0] = new char[100]; // How many total boxes are there? Please specify according to the NOP.
-	}
+	//Ludo(int NOP)
+	//{
+	//	Players = new Player[NOP];
+	//	Grid = new char*[1];
+	//	Grid[0] = new char[100]; // How many total boxes are there? Please specify according to the NOP.
+	//}
 
-	void UpdateBoard(Token T)
-	{
-		Grid[0][T.TokenLocationOnBoard] = '-';
-		//Grid[0][T.TokenLocationOnBoard + Players[Turn].DICE.DiceNoAtIndex(DU)];
-	}
+	//void UpdateBoard(Token T)
+	//{
+	//	Grid[0][T.TokenLocationOnBoard] = '-';
+	//	//Grid[0][T.TokenLocationOnBoard + Players[Turn].DICE.DiceNoAtIndex(DU)];
+	//}
 
 	void ChangeTurn()
 	{
@@ -173,7 +173,7 @@ public:
 
 	void UpdatePlayerList(int Turn)
 	{
-		Player* NewPlayer = new Player[NoOfPlayers - WC]; // Provided WC has already been updated. Please take note
+		Player** NewPlayer = new Player*[NoOfPlayers - WC]; // Provided WC has already been updated. Please take note
 		int z = 0;
 		for (int i = 0; i < NoOfPlayers - WC; i++)
 		{
@@ -446,7 +446,7 @@ public:
 
 	bool isWin()
 	{
-		if (Players[Turn].TokenReachDest==4)
+		if (Players[Turn]->TokenReachDest==4)
 			return true;
 		else
 			return false;
@@ -459,14 +459,14 @@ public:
 
 	void init()
 	{
-		Grid = new Token[92];
+		Grid = new Token*[92];
 		for(int i=0;i<92;++i)
 			Grid[i]=nullptr;
-		Players = new Player[4];
-		PLayers[0]= new Player(GREEN);
-		PLayers[1]= new Player(DARKGREY);
-		PLayers[2]= new Player(BLUE);
-		PLayers[3]= new Player(RED);
+		Players = new Player*[4];
+		Players[0]= new Player(GREEN);
+		Players[1]= new Player(DARKGRAY);
+		Players[2]= new Player(BLUE);
+		Players[3]= new Player(RED);
 	}
 	
 	int choosingtoken()

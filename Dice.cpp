@@ -19,6 +19,6 @@ void Dice::rolladice()
 	do
 	{
 		Baazi = randomgen();
-		diceno.pushback(baazi);
+		diceno.push_back(Baazi);
 	} while (Baazi == 6 && diceno.size()<3);
 }
