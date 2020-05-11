@@ -9,7 +9,7 @@ public:
 	virtual void draw(Position p)
 	{
 
-		setfillstyle(SOLID_FILL, YELLOW);
+		setfillstyle(SOLID_FILL, DARKGRAY);
 		circle(p.x, p.y, 18);
 	}
 
