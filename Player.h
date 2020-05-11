@@ -2,39 +2,19 @@
 #include"Token.h"
 #include "Dice.h"
 using namespace std;
-class Player :public Token
+class Player
 {
 public:
-	// char** GridPointer;
-	Token* TokenArray;
-	int NoToken;// number of token
-	//GrowA<int> DiceNo;    // growable array is template
-	Dice DICE;
-	Token tokenSelected;
 	colors color;
-	int InitialLocation;
-public:
-
+	int TokenReachDest;
 	Player()
 	{
 
 	}
-	Player(colors c,int initiallocation):color(c),InitialLocation(initiallocation)
+	Player(colors c):color(c)
 	{
-		TokenArray = new Token[4];
+		TokenReachDest = 0;
 	}
-	
-
-	void PlayingSelectedToken(Token T)
-	{
-
-	}
-
-	void ChoosingTokken()
-	{
-
-	}
-	
 	colors getColor()
 	{
 		return color;
