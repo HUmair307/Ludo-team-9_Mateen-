@@ -190,7 +190,24 @@ public:
 		//Should we display "Player Blue Won"???? And at which place?
 		// we can increase the init window size and can show both dice roll and win msg there.
 	}
-
+	void mouseclick(Position& p)
+	{
+		while (!ismouseclick(WM_LBUTTONDOWN))
+		{
+			getmouseclick(WM_LBUTTONDOWN, p.x, p.y);
+		}
+	}
+	int choosingtoken()
+	{
+		Position p, t1, t2;
+		mouseclick(p);
+		for (int i = 0; i < 76; i++)
+		{
+			t1 = C[i].getBR(), t2 = C[i].getBR();
+			if (C[i].BoxConfirmation(p.x, p.y))
+				return i;
+		}
+	}
 	void DisplayBoard()
 	{
 		initwindow(800, 800, "LUDO");
