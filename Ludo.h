@@ -168,7 +168,7 @@ public:
 		delete[]Players;
 		Players = NewPlayer;
 	}
-
+	
 	void DisplayResult()
 	{
 		//Should we display "Player Blue Won"???? And at which place?
