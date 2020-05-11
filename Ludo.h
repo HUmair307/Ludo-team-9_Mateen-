@@ -17,7 +17,7 @@ protected:
 	int DU;
 	int NOC=0;// number of cells
 	Cell C[76];
-
+	POsition P;
 	colors cc = WHITE;
 
 	/*
@@ -195,17 +195,6 @@ public:
 		while (!ismouseclick(WM_LBUTTONDOWN))
 		{
 			getmouseclick(WM_LBUTTONDOWN, p.x, p.y);
-		}
-	}
-	int choosingtoken()
-	{
-		Position p, t1, t2;
-		mouseclick(p);
-		for (int i = 0; i < 76; i++)
-		{
-			t1 = C[i].getBR(), t2 = C[i].getBR();
-			if (C[i].BoxConfirmation(p.x, p.y))
-				return i;
 		}
 	}
 	void DisplayBoard()
@@ -553,6 +542,19 @@ public:
 		//cin number of players
 		// will initialize the Player*;
 	}
+	
+	int choosingtoken()
+	{
+		Position p;
+		mouseclick(p);
+		for (int i = 0; i < 76; i++)
+		{
+			if (C[i].BoxConfirmation(p.x, p.y))
+				return i;
+		}
+		return -1;
+	}
+	
 	void Play()
 	{
 		init();
@@ -560,16 +562,17 @@ public:
 		do
 		{
 			DisplayBoard();
-
-
-
-
 			DisplayPlayerMsg();
 			//Players[Turn].rolladice();
 			//Players[Turn].ChoosingTokken();
 			//Players[Turn].PlayingSelectedToken(tokenSelected);
 			//UpdateBoard(tokenSelected);
 			//Players[Turn].DrawToken();
+			int SelectBoxIndex;
+			do
+			{
+				SelectBoxIndex = choosingtoken();
+			}while(SelectBoxIndex==-1);
 			if (isWin())
 			{
 				WC++;
