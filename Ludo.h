@@ -17,7 +17,7 @@ protected:
 	int DU;
 	int NOC=0;// number of cells
 	Cell C[76];
-	POsition P;
+	Position P;
 	colors cc = WHITE;
 
 	/*
@@ -192,10 +192,7 @@ public:
 	}
 	void mouseclick(Position& p)
 	{
-		while (!ismouseclick(WM_LBUTTONDOWN))
-		{
-			getmouseclick(WM_LBUTTONDOWN, p.x, p.y);
-		}
+		int Dim = 80; while (!ismouseclick(WM_LBUTTONDOWN)) {} getmouseclick(WM_LBUTTONDOWN, p.x, p.y); 
 	}
 	void DisplayBoard()
 	{
@@ -303,84 +300,6 @@ public:
 													
 													*/
 		cc = LIGHTCYAN;
-
-		//// GRAY
-		//for (int x = 0,i=0; x < 138; x += 46,i++)
-		//{
-		//	for (int y = 0,k=0; y < 276; y += 46,k++)
-		//	{
-		//		int a[10] = { 276+x,0 + y,322 + x,0 + y,322 + x,46 + y,276 + x,46+y,276 + x,0+y };
-		//		if ((i == 0 && k == 2) || (i == 1 && k > 0) || (i == 2 && k == 1))
-		//		{
-		//			cc = DARKGRAY; C[NOC].Issave = true;
-		//		}
-		//		setfillstyle(SOLID_FILL, cc);
-		//		C[NOC].setcellPos(Position(276 + x, 0 + y), Position(322 + x, 46 + y), cc);
-		//		fillpoly(5, a);
-		//		setfillstyle(SOLID_FILL, LIGHTCYAN);
-		//		cc = LIGHTCYAN;
-		//		NOC++;
-		//	}
-		//}
-		////blue
-		//for (int y = 0, i = 0; y < 138; y += 46, i++)
-		//{
-		//	for (int x = 0, k = 0; x < 276; x += 46, k++)
-		//	{
-		//		int g[10] = { 414 + x,276 + y,460 + x,276 + y,460 + x,322 + y,414 + x,322 + y,414 + x,276 + y };
-
-		//		if ((i == 0 && k == 3) || (i == 1 && k < 5) || (i == 2 && k == 4))
-		//		{
-		//			cc = BLUE; C[NOC].Issave = true;
-		//		}
-		//		setfillstyle(SOLID_FILL, cc);
-		//		C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-		//		fillpoly(5, g);
-		//		setfillstyle(SOLID_FILL, BLACK);
-		//		cc = BLACK;
-		//		NOC++;
-		//	}
-		//}
-		////
-		////// GREEN
-		////
-
-		//for (int y = 0,i = 0; y < 138; y += 46,i++)
-		//{
-		//	for (int x = 0,k = 0; x < 276; x += 46,k++)
-		//	{
-		//		int g[10] = { 0 + x,276 + y,46 + x,276 + y,46 + x,322 + y,0 + x,322 + y,0 + x,276 + y };
-		//		if ((i == 0 && k == 1) || (i == 1 && k > 0) || (i == 2 && k == 2))
-		//		{
-		//			cc = GREEN; C[NOC].Issave = true;
-		//		}
-		//		setfillstyle(SOLID_FILL, cc);
-		//		C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-		//		fillpoly(5, g);
-		//		setfillstyle(SOLID_FILL, BLACK);
-		//		cc = BLACK;
-		//		NOC++;
-		//	}
-		//}
-		//////RED
-		//for (int x = 0, i = 0; x < 138; x += 46, i++)
-		//{
-		//	for (int y = 0, k = 0; y < 276; y += 46, k++)
-		//	{
-		//		int a[10] = { 276 + x,414 + y,322 + x,414 + y,322 + x,460 + y,276 + x,460 + y,276 + x,414 + y };
-		//		if ((i == 0 && k == 4) || (i == 1 && k < 5) || (i == 2 && k == 3))
-		//		{
-		//			cc = RED; C[NOC].Issave = true;
-		//		}
-		//		setfillstyle(SOLID_FILL, cc);
-		//		C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-		//		fillpoly(5, a);
-		//		setfillstyle(SOLID_FILL, BLACK);
-		//		cc = BLACK;
-		//		NOC++;
-		//	}
-		//}
-		//
 
 
 		// GRAY
@@ -557,8 +476,8 @@ public:
 	
 	void Play()
 	{
-		init();
-		StartGame();
+		//init();
+		//StartGame();
 		do
 		{
 			DisplayBoard();
