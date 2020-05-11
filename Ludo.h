@@ -10,15 +10,16 @@ using namespace std;
 class Ludo :public Player,public Cell
 {
 protected:
-	char** Grid;
+	Token* Grid;
 	Player* Players;
 	//Player Players[MaxPlayers];
 	int NoOfPlayers, Turn, MaxNoSteps, WC;
 	int DU;
 	int NOC=0;// number of cells
-	Cell C[76];
+	Cell C[92];
 	Position P;
 	colors cc = WHITE;
+	Dice dice;
 
 	/*
 	 YELLOW
@@ -458,15 +459,21 @@ public:
 
 	void init()
 	{
-		//cin number of players
-		// will initialize the Player*;
+		Grid = new Token[92];
+		for(int i=0;i<92;++i)
+			Grid[i]=nullptr;
+		Players = new Player[4];
+		PLayers[0]= new Player(GREEN);
+		PLayers[1]= new Player(DARKGREY);
+		PLayers[2]= new Player(BLUE);
+		PLayers[3]= new Player(RED);
 	}
 	
 	int choosingtoken()
 	{
 		Position p;
 		mouseclick(p);
-		for (int i = 0; i < 76; i++)
+		for (int i = 0; i < 92; i++)
 		{
 			if (C[i].BoxConfirmation(p.x, p.y))
 				return i;
@@ -476,17 +483,18 @@ public:
 	
 	void Play()
 	{
-		//init();
+		init();
 		//StartGame();
+		DisplayBoard();
 		do
 		{
-			DisplayBoard();
 			DisplayPlayerMsg();
 			//Players[Turn].rolladice();
 			//Players[Turn].ChoosingTokken();
 			//Players[Turn].PlayingSelectedToken(tokenSelected);
 			//UpdateBoard(tokenSelected);
 			//Players[Turn].DrawToken();
+			dice.rolladice();
 			int SelectBoxIndex;
 			do
 			{
