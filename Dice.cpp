@@ -15,32 +15,10 @@ int Dice::randomgen()
 }
 void Dice::rolladice()
 {
-	randomgen();
-	diceno.push_back(randomgen());
-	if (randomgen() == 6)
+	int Baazi = 0;
+	do
 	{
-		randomgen();
-		diceno.push_back(randomgen());
-		if (randomgen() == 6)
-		{
-			randomgen();
-			diceno.push_back(randomgen());
-			if (randomgen() == 6)
-			{
-				reset();
-				//turnchange();
-
-			}
-		}
-		else
-		{
-			reset();
-			//turnchange();
-		}
-	}
-	else
-	{
-		reset();
-		//turnchange();
-	}
+		Baazi = randomgen();
+		diceno.pushback(baazi);
+	} while (Baazi == 6 && diceno.size()<3);
 }
