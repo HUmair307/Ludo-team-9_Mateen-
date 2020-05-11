@@ -10,10 +10,11 @@ class Token :public Dice
 public:
 	colors color;
 	int initialLocation;
+	int HomeCell;
 	int NoOfStepsTaken;
 	int TokenLocationOnBoard;
-	int TokenReachDest;
-	char status;
+	// int TokenReachDest;
+	// char status;
 
 
 public:
@@ -22,6 +23,16 @@ public:
 	{
 
 	}
+	
+	Token(colors C, int HomeIndex, int IntialCell)
+	{
+		color = C;
+		NoOfStepsTaken = 0;
+		HomeCell = HomeIndex;
+		initialLocation = IntialCell;
+		TokenLocationOnBoard = HomeIndex;
+	}
+	
 	virtual void DrawToken(Position P)
 	{
 
