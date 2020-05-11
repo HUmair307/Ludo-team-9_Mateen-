@@ -17,7 +17,7 @@ protected:
 	int DU;
 	int NOC=0;// number of cells
 	Cell C[76];
-
+	POsition P;
 	colors cc = WHITE;
 
 	/*
@@ -151,6 +151,22 @@ public:
 
 	void DisplayPlayerMsg()
 	{
+		if (Turn == 0)
+		{
+			outtextxy(750, 50, "blue's turn");
+		}
+		else if (Turn == 1)
+		{
+			outtextxy(750, 50, "red's turn");
+		}
+		else if (Turn == 2)
+		{
+			outtextxy(750, 50, "green's turn");
+		}
+		else 
+		{
+			outtextxy(750, 50, "darkgray's turn");
+		}
 		// Where should we display the which player's turn is it right now?
 	}
 
@@ -174,7 +190,13 @@ public:
 		//Should we display "Player Blue Won"???? And at which place?
 		// we can increase the init window size and can show both dice roll and win msg there.
 	}
-
+	void mouseclick(Position& p)
+	{
+		while (!ismouseclick(WM_LBUTTONDOWN))
+		{
+			getmouseclick(WM_LBUTTONDOWN, p.x, p.y);
+		}
+	}
 	void DisplayBoard()
 	{
 		initwindow(800, 800, "LUDO");
@@ -520,6 +542,19 @@ public:
 		//cin number of players
 		// will initialize the Player*;
 	}
+	
+	int choosingtoken()
+	{
+		Position p;
+		mouseclick(p);
+		for (int i = 0; i < 76; i++)
+		{
+			if (C[i].BoxConfirmation(p.x, p.y))
+				return i;
+		}
+		return -1;
+	}
+	
 	void Play()
 	{
 		init();
@@ -527,16 +562,17 @@ public:
 		do
 		{
 			DisplayBoard();
-
-
-
-
 			DisplayPlayerMsg();
 			//Players[Turn].rolladice();
 			//Players[Turn].ChoosingTokken();
 			//Players[Turn].PlayingSelectedToken(tokenSelected);
 			//UpdateBoard(tokenSelected);
 			//Players[Turn].DrawToken();
+			int SelectBoxIndex;
+			do
+			{
+				SelectBoxIndex = choosingtoken();
+			}while(SelectBoxIndex==-1);
 			if (isWin())
 			{
 				WC++;
