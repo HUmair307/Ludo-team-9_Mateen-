@@ -528,6 +528,10 @@ public:
 		do
 		{
 			DisplayBoard();
+
+
+
+
 			DisplayPlayerMsg();
 			Players[Turn].rolladice();
 			Players[Turn].ChoosingTokken();
