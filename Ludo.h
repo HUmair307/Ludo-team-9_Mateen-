@@ -533,7 +533,7 @@ public:
 			Players[Turn].ChoosingTokken();
 			Players[Turn].PlayingSelectedToken(tokenSelected);
 			UpdateBoard(tokenSelected);
-			Players[Turn].DrawToken();
+			//Players[Turn].DrawToken();
 			if (isWin())
 			{
 				WC++;
