@@ -151,6 +151,22 @@ public:
 
 	void DisplayPlayerMsg()
 	{
+		if (Turn == 0)
+		{
+			outtextxy(750, 50, "blue's turn");
+		}
+		else if (Turn == 1)
+		{
+			outtextxy(750, 50, "red's turn");
+		}
+		else if (Turn == 2)
+		{
+			outtextxy(750, 50, "green's turn");
+		}
+		else 
+		{
+			outtextxy(750, 50, "darkgray's turn");
+		}
 		// Where should we display the which player's turn is it right now?
 	}
 
