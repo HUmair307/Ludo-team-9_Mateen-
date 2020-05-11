@@ -1,6 +1,7 @@
 #pragma once
 #include"Dice.h"
 #include "graphics.h"
+#include "Position.h"
 enum Color { Red, Blue, Green, Yellow, White, Black };
 
 // as sarfaraz said.....max players can be 6

@@ -139,7 +139,7 @@ public:
 	void UpdateBoard(Token T)
 	{
 		Grid[0][T.TokenLocationOnBoard] = '-';
-		Grid[0][T.TokenLocationOnBoard + Players[Turn].DICE.DiceNoAtIndex(DU)];
+		//Grid[0][T.TokenLocationOnBoard + Players[Turn].DICE.DiceNoAtIndex(DU)];
 	}
 
 	void ChangeTurn()
@@ -314,8 +314,8 @@ public:
 		//		setfillstyle(SOLID_FILL, cc);
 		//		C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
 		//		fillpoly(5, g);
-		//		setfillstyle(SOLID_FILL, LIGHTCYAN);
-		//		cc = LIGHTCYAN;
+		//		setfillstyle(SOLID_FILL, BLACK);
+		//		cc = BLACK;
 		//		NOC++;
 		//	}
 		//}
@@ -335,8 +335,8 @@ public:
 		//		setfillstyle(SOLID_FILL, cc);
 		//		C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
 		//		fillpoly(5, g);
-		//		setfillstyle(SOLID_FILL, LIGHTCYAN);
-		//		cc = LIGHTCYAN;
+		//		setfillstyle(SOLID_FILL, BLACK);
+		//		cc = BLACK;
 		//		NOC++;
 		//	}
 		//}
@@ -353,8 +353,8 @@ public:
 		//		setfillstyle(SOLID_FILL, cc);
 		//		C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
 		//		fillpoly(5, a);
-		//		setfillstyle(SOLID_FILL, LIGHTCYAN);
-		//		cc = LIGHTCYAN;
+		//		setfillstyle(SOLID_FILL, BLACK);
+		//		cc = BLACK;
 		//		NOC++;
 		//	}
 		//}
@@ -374,8 +374,8 @@ public:
 			setfillstyle(SOLID_FILL, cc);
 			C[NOC].setcellPos(Position(276 , 230 - y), Position(322, 276 - y), cc);
 			fillpoly(5, a);
-			setfillstyle(SOLID_FILL, LIGHTCYAN);
-			cc = LIGHTCYAN;
+			setfillstyle(SOLID_FILL, BLACK);
+			cc = BLACK;
 			NOC++;
 		}
 		
@@ -398,8 +398,8 @@ public:
 				setfillstyle(SOLID_FILL, cc);
 				C[NOC].setcellPos(Position(276 + x, 0 + y), Position(322 + x, 46 + y), cc);
 				fillpoly(5, a);
-				setfillstyle(SOLID_FILL, LIGHTCYAN);
-				cc = LIGHTCYAN;
+				setfillstyle(SOLID_FILL, BLACK);
+				cc = BLACK;
 				NOC++;
 			}
 		}
@@ -417,11 +417,11 @@ public:
 			setfillstyle(SOLID_FILL, cc);
 			C[NOC].setcellPos(Position(276 + x, 414 ), Position(322 + x, 460), cc);
 			fillpoly(5, g);
-			setfillstyle(SOLID_FILL, LIGHTCYAN);
-			cc = LIGHTCYAN;
+			setfillstyle(SOLID_FILL, BLACK);
+			cc = BLACK;
 			NOC++;
 		}
-		cc = LIGHTCYAN;
+		cc = BLACK;
 		for (int y = 46, i = 1; y < 138; y += 46, i++)
 		{
 			for (int x = 230, k = 0; x >= 0; x -= 46, k++)
@@ -441,12 +441,11 @@ public:
 				setfillstyle(SOLID_FILL, cc);
 				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
 				fillpoly(5, g);
-				setfillstyle(SOLID_FILL, LIGHTCYAN);
-				cc = LIGHTCYAN;
+				setfillstyle(SOLID_FILL, BLACK);
+				cc = BLACK;
 				NOC++;
 			}
 		}
-
 		////RED
 		SBN = 66;
 		for (int x = 92, i = 0; x >= 0; x -= 46, i++)
@@ -467,8 +466,8 @@ public:
 				setfillstyle(SOLID_FILL, cc);
 				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
 				fillpoly(5, a);
-				setfillstyle(SOLID_FILL, LIGHTCYAN);
-				cc = LIGHTCYAN;
+				setfillstyle(SOLID_FILL, BLACK);
+				cc = BLACK;
 				NOC++;
 			}
 		}
@@ -496,8 +495,8 @@ public:
 				setfillstyle(SOLID_FILL, cc);
 				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
 				fillpoly(5, g);
-				setfillstyle(SOLID_FILL, LIGHTCYAN);
-				cc = LIGHTCYAN;
+				setfillstyle(SOLID_FILL, BLACK);
+				cc = BLACK;
 				NOC++;
 			}
 		}
@@ -533,10 +532,10 @@ public:
 
 
 			DisplayPlayerMsg();
-			Players[Turn].rolladice();
-			Players[Turn].ChoosingTokken();
-			Players[Turn].PlayingSelectedToken(tokenSelected);
-			UpdateBoard(tokenSelected);
+			//Players[Turn].rolladice();
+			//Players[Turn].ChoosingTokken();
+			//Players[Turn].PlayingSelectedToken(tokenSelected);
+			//UpdateBoard(tokenSelected);
 			//Players[Turn].DrawToken();
 			if (isWin())
 			{
