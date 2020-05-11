@@ -21,7 +21,7 @@ class Grid
   
   bool BoxConfirmation(int x, int y)
   {
-      return ((x >= TopLeft.x && x <= BottomRight.y) && (y >= TopLeft.x && y <= BottomRight.y));
+      return ((x >= TopLeft.x && x <= BottomRight.x) && (y >= TopLeft.y && y <= BottomRight.y));
   }
   
   Position getTopLeft()
