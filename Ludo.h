@@ -263,25 +263,6 @@ public:
 									==> Position of every box is saved ( TopLeft and ButtonRight + color)
 									==> box with color are declared as safe spot and their position are saved
 									S===> SAFE SPOT, TOTAL BOXES===> 76
-											  YELLOW
-
-											  0 6  12
-											  1 7  13 S
-											S 2 8  14
-											  3 9  15
-						G					  4 10 16
-						R		S			  5 11 17           S			B
-						E	36 37 38 39 40 41	 72	   18 19 20 21 22 23	L
-						E	42 43 44 45 46 47 75	73 24 25 26 27 28 29	U
-						N	48 49 50 51 52 53	 74	   30 31 32 33 34 35	E
-								  S           54 60 66             S
-											  55 61 67
-											  56 62 68
-											  57 63 69 S
-											S 58 64 70
-											  59 65 71
-
-											  R  E  D
 
 											  5 6 7
 											  4   8  52
@@ -290,7 +271,7 @@ public:
 											  1   11 55
 											  0   12 56
 							46 47 48 49	50 51 	    13 14 15 16 17 18
-							45 71 7 69  68 67       61 60 59 58 57 19                    
+							45 67 68 69 70 71       61 60 59 58 57 19                    
 							44 43 42 41 40 39       25 24 23 22 21 20
 											38 62 26
 											37 63 27	
@@ -381,10 +362,6 @@ public:
 		//
 
 
-
-
-
-
 		// GRAY
 		NOC = 0;
 		int SBN = 52;
@@ -428,26 +405,7 @@ public:
 			}
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-	
-		
-		
 		//blue
-
-
-
-
-
-
-
-
-
 		
 		for (int x = 0, k = 0; x < 276; x += 46, k++)
 		{
@@ -490,61 +448,60 @@ public:
 			}
 		}
 
+		////RED
+		SBN = 66;
+		for (int x = 92, i = 0; x >= 0; x -= 46, i++)
+		{
+			for (int y = 0, k = 0; y < 276; y += 46, k++)
+			{
+				int a[10] = { 276 + x,414 + y,322 + x,414 + y,322 + x,460 + y,276 + x,460 + y,276 + x,414 + y };
+				if ((i == 0 && k == 3)  || (i == 2 && k == 4))
+				{
+					cc = RED; C[NOC].Issave = true;
+				}
+				if ((i == 1 && k < 5))
+				{
+					cc = RED; C[SBN].Issave = true;
+					C[SBN].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+					SBN--;
+				}
+				setfillstyle(SOLID_FILL, cc);
+				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+				fillpoly(5, a);
+				setfillstyle(SOLID_FILL, LIGHTCYAN);
+				cc = LIGHTCYAN;
+				NOC++;
+			}
+		}
 
 		////
 		////// GREEN
 		////
+		SBN = 71;
+		for (int y = 92, i = 0; y >=0; y -= 46, i++)
+		{
+			for (int x = 230, k = 0; x >= 0; x -= 46, k++)
+			{
+				int g[10] = { 0 + x,276 + y,46 + x,276 + y,46 + x,322 + y,0 + x,322 + y,0 + x,276 + y };
+				if ((i == 0 && k == 3)  || (i == 2 && k == 4))
+				{
+					cc = GREEN; C[NOC].Issave = true;
+				}
+				if ((i == 1 && k < 5))
+				{
+					cc = GREEN; C[SBN].Issave = true;
 
-		//for (int y = 0, i = 0; y < 138; y += 46, i++)
-		//{
-		//	for (int x = 0, k = 0; x < 276; x += 46, k++)
-		//	{
-		//		int g[10] = { 0 + x,276 + y,46 + x,276 + y,46 + x,322 + y,0 + x,322 + y,0 + x,276 + y };
-		//		if ((i == 0 && k == 1) || (i == 1 && k > 0) || (i == 2 && k == 2))
-		//		{
-		//			cc = GREEN; C[NOC].Issave = true;
-		//		}
-		//		setfillstyle(SOLID_FILL, cc);
-		//		C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-		//		fillpoly(5, g);
-		//		setfillstyle(SOLID_FILL, LIGHTCYAN);
-		//		cc = LIGHTCYAN;
-		//		NOC++;
-		//	}
-		//}
-		//////RED
-		//for (int x = 0, i = 0; x < 138; x += 46, i++)
-		//{
-		//	for (int y = 0, k = 0; y < 276; y += 46, k++)
-		//	{
-		//		int a[10] = { 276 + x,414 + y,322 + x,414 + y,322 + x,460 + y,276 + x,460 + y,276 + x,414 + y };
-		//		if ((i == 0 && k == 4) || (i == 1 && k < 5) || (i == 2 && k == 3))
-		//		{
-		//			cc = RED; C[NOC].Issave = true;
-		//		}
-		//		setfillstyle(SOLID_FILL, cc);
-		//		C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-		//		fillpoly(5, a);
-		//		setfillstyle(SOLID_FILL, LIGHTCYAN);
-		//		cc = LIGHTCYAN;
-		//		NOC++;
-		//	}
-		//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+					C[SBN].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+					SBN--;
+				}
+				setfillstyle(SOLID_FILL, cc);
+				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+				fillpoly(5, g);
+				setfillstyle(SOLID_FILL, LIGHTCYAN);
+				cc = LIGHTCYAN;
+				NOC++;
+			}
+		}
 	}
 
 	bool isWin()
