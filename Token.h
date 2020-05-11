@@ -8,7 +8,7 @@ enum Color { Red, Blue, Green, Yellow, White, Black };
 class Token :public Dice
 {
 public:
-	char color;
+	colors color;
 	int initialLocation;
 	int NoOfStepsTaken;
 	int TokenLocationOnBoard;
@@ -30,7 +30,11 @@ public:
 	{
 	
 	}
-
+	
+	colors getColor()
+	{
+		return color;
+	}
 
 
 };
