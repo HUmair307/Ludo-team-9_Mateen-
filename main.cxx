@@ -405,7 +405,7 @@ int main()
 {
 	Ludo ludo;
 	//ludo.Play();
-	ludo.DisplayBoard();
+	ludo.Play();
 	cout << "I m here";
 	system("Pause");
 }

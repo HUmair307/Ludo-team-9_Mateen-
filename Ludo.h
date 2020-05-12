@@ -3,6 +3,10 @@
 #include "Dice.h"
 #include "Grid.h"
 #include<string.h>
+#include"GreenToken.h"
+#include"RedToken.h"
+#include"YellowToken.h"
+#include"BlueToken.h"
 using namespace std;
 class Ludo :public Player,public Cell
 {
@@ -17,7 +21,7 @@ protected:
 	Position P;
 	colors cc = WHITE;
 	Dice dice;
-	int HCN = 0;
+	int HCN = 76;
 	/*
 	 YELLOW
 									          
@@ -129,18 +133,18 @@ public:
 		C[HCN].setcellPos(Position(193,37), Position(239,83), GREEN); HCN++;
 		drawpoly(5, j);
 		int k[10] = { 37,193,83,193,83,239,37,239,37,193};// points of home cell of green 
-		C[HCN].setcellPos(Position(37, 193), Position(37, 239), GREEN); HCN++;
+		C[HCN].setcellPos(Position(37, 193), Position(83, 239), GREEN); HCN++;
 		drawpoly(5, k);
 		int l[10] = { 193,193,239,193,239,239,193,239,193,193};// points of home cell of green 
 		C[HCN].setcellPos(Position(193, 193), Position(239, 239), GREEN); HCN++;
 		drawpoly(5, l);
 		setfillstyle(SOLID_FILL, LIGHTGREEN);
 		fillpoly(5, a1);
-		setfillstyle(SOLID_FILL, GREEN);
-		fillellipse(60, 60, 20, 20);
-		fillellipse(216, 60, 20, 20);
-		fillellipse(60, 216, 20, 20);
-		fillellipse(216, 216, 20, 20);
+		//setfillstyle(SOLID_FILL, GREEN);
+		//fillellipse(60, 60, 20, 20);
+		//fillellipse(216, 60, 20, 20);
+		//fillellipse(60, 216, 20, 20);
+		//fillellipse(216, 216, 20, 20);
 /// GREEN IS ENDED.
 
 		int b[10] = { 414,0,690,0,690,276,414,276,414,0 };
@@ -167,12 +171,12 @@ public:
 		fillpoly(5, b1);
 
 
-		setfillstyle(SOLID_FILL, DARKGRAY);
+		/*setfillstyle(SOLID_FILL, DARKGRAY);
 
 		fillellipse(474, 60, 20, 20);
 		fillellipse(630, 60, 20, 20);
 		fillellipse(474, 216, 20, 20);
-		fillellipse(630, 216, 20, 20);
+		fillellipse(630, 216, 20, 20);*/
 /// DARKGRAY HAS ENDED
 
 
@@ -202,11 +206,11 @@ public:
 		int d1[10] = { 414 + 30,414 + 30,690 - 30,414 + 30,690 - 30,690 - 30,414 + 30,690 - 30,414 + 30,414 + 30 };
 		setfillstyle(SOLID_FILL, LIGHTBLUE);
 		fillpoly(5, d1);
-		setfillstyle(SOLID_FILL, BLUE);
-		fillellipse(474, 474, 20, 20);
-		fillellipse(474, 630, 20, 20);
-		fillellipse(630, 474, 20, 20);
-		fillellipse(630, 630, 20, 20);
+		//setfillstyle(SOLID_FILL, BLUE);
+		//fillellipse(474, 474, 20, 20);
+		//fillellipse(474, 630, 20, 20);
+		//fillellipse(630, 474, 20, 20);
+		//fillellipse(630, 630, 20, 20);
 
 //BLUE HAS ENDED
 
@@ -232,11 +236,11 @@ public:
 		int c1[10] = { 0+30,414+30,276-30,414+30,276-30,690-30,0+30,690-30,0+30,414+30 };
 		setfillstyle(SOLID_FILL, LIGHTRED);
 		fillpoly(5, c1);
-		setfillstyle(SOLID_FILL, RED);
+		/*setfillstyle(SOLID_FILL, RED);
 		fillellipse(216, 474, 20, 20);
 		fillellipse(216, 630, 20, 20);
 		fillellipse(60, 474, 20, 20);
-		fillellipse(60, 630, 20, 20);
+		fillellipse(60, 630, 20, 20);*/
 
 
 
@@ -448,12 +452,27 @@ public:
 		
 	}
 
+	
+
 	void DisplayDiceNo()
 	{
 		int diceindex = 92;
-		dice.diceno[0] = 6, dice.diceno[1] = 6, dice.diceno[2] = 4;
-		Position P = C[diceindex].getcellcenter(C[diceindex].getTL(), C[diceindex].getBR());
-		outtextxy(P.x, P.y, (char*)dice.diceno[0]);
+		dice.rolladice();
+		
+		for (int d = 0; d < 3; d++)
+		{
+			Position t1 = C[diceindex+d].getTL(), t2 = C[diceindex+d].getBR();
+			Position P = C[diceindex+d].getcellcenter(t1, t2);
+			int k = dice.diceno[d];
+			stringstream strs;
+			strs << k;
+			string temp_str = strs.str();
+			char* char_type = (char*)temp_str.c_str();
+			outtextxy(P.x, P.y, char_type);
+		}
+
+		
+
 
 	}
 
@@ -476,10 +495,29 @@ public:
 		for(int i=0;i<92;++i)
 			Grid[i]=nullptr;
 		Players = new Player*[4];
+		Players[3] = new Player(RED);
 		Players[0]= new Player(GREEN);
 		Players[1]= new Player(DARKGRAY);
 		Players[2]= new Player(BLUE);
-		Players[3]= new Player(RED);
+		
+			for (int i = 0; i < 4; i++)
+			{
+				Players[2]->PlayerTokens[i] = new BlueToken(BLUE, 84 + i, 21);
+				Players[3]->PlayerTokens[i] = new RedToken(RED, 88+i, 34);
+				Players[0]->PlayerTokens[i] = new GreenToken(GREEN, 76 + i, 47);
+				Players[1]->PlayerTokens[i] = new YellowToken(DARKGRAY, 80 + i, 8);
+			}
+			int m = 0;
+			for (int  i = 0; i < 4; i++)
+			{
+				for (int k = 0; k < 4; k++)
+				{
+					Grid[76 + m] = Players[i]->PlayerTokens[k];
+					m++;
+				}
+			}
+
+
 	}
 	
 	int choosingtoken()
@@ -513,14 +551,25 @@ public:
 	{
 		for(int i=0;i<4;++i)
 		{
-			if (Players[Turn]->PlayerTokens[i].isAtHome())
+			if (Players[Turn]->PlayerTokens[i]->isAtHome())
 			{
 				if (dice.DiceNoAtIndex(0)==6)
 					return true;
 			}
-			else if (Players[Turn]->PlayerTokens[i].StepsTaken() + dice.DiceNoAtIndex(0) <= 55)
+			else if (Players[Turn]->PlayerTokens[i]->StepsTaken() + dice.DiceNoAtIndex(0) <= 55)
 				return true;
 			return false;
+		}
+	}
+	void DrawToken()
+	{
+		for (int  i = 0; i < 92; i++)
+		{
+			if (Grid[i]!=NULL)
+			{
+				Position P = C[i].getcellcenter(C[i].getTL(), C[i].getBR());
+				Grid[i]->DrawToken(P);
+			}
 		}
 	}
 	void Play()
@@ -528,8 +577,11 @@ public:
 		init();
 		//StartGame();
 		DisplayBoard();
+		DisplayDiceNo();
+		
 		do
 		{
+			DrawToken();
 			DisplayPlayerMsg();
 			//Players[Turn].rolladice();
 			//Players[Turn].ChoosingTokken();

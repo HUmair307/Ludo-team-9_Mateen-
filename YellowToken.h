@@ -6,11 +6,12 @@ class YellowToken :public Token
 {
 
 public:
-	virtual void draw(Position p)
+	YellowToken(colors C, int HomeIndex, int IntialCell) :Token(C, HomeIndex, IntialCell) {}
+	virtual void DrawToken(Position p)
 	{
-
 		setfillstyle(SOLID_FILL, DARKGRAY);
-		circle(p.x, p.y, 18);
+		fillellipse(p.x, p.y, 18, 18);
+
 	}
 
 };

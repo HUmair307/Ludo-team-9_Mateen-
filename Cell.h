@@ -17,7 +17,7 @@ public:
 	}
 	Position getcellcenter(Position TL,Position BR)
 	{
-		Position P(TL.x + BR.x / 2, TL.y + BR.y);
+		Position P((TL.x + BR.x )/ 2, (TL.y + BR.y)/2);
 		return P;
 	}
 	void setcellPos(Position T, Position B, colors c)

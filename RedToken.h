@@ -6,11 +6,14 @@ class RedToken :public Token
 {
 
 public:
-	virtual void draw(Position p)
+	RedToken(colors C, int HomeIndex, int IntialCell) :Token(C, HomeIndex, IntialCell) {}
+
+	virtual void DrawToken(Position p)
 	{
 
 		setfillstyle(SOLID_FILL, RED);
-		circle(p.x, p.y, 18);
+		fillellipse(p.x, p.y, 18, 18);
+
 	}
 };
 
