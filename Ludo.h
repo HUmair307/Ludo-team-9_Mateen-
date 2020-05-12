@@ -120,7 +120,7 @@ public:
 	}
 	void DisplayBoard()
 	{
-		initwindow(800, 800, "LUDO");
+		initwindow(1100, 800, "LUDO");
 		int a[10]= { 0,0,276,0,276,276,0,276,0,0};
 		setfillstyle(SOLID_FILL, GREEN);
 		fillpoly(5, a);
