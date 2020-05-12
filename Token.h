@@ -54,6 +54,16 @@ public:
 		return HomeStatus;
 	}
 
-
+	int StepsTaken()
+	{
+		return NoOfStepsTaken;
+	}
+	
+	void Killed()
+	{
+		NoOfStepsTaken = 0;
+		TokenLocationOnBoard = HomeIndex;
+		HomeStatus = true;
+	}
 };
 
