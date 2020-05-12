@@ -17,6 +17,7 @@ protected:
 	int DU;
 	int NOC=0;// number of cells
 	Cell C[92];
+	int HCN = 76;
 	Position P;
 	colors cc = WHITE;
 	Dice dice;
@@ -201,6 +202,7 @@ public:
 		int a[10]= { 0,0,276,0,276,276,0,276,0,0};
 		setfillstyle(SOLID_FILL, GREEN);
 		fillpoly(5, a);
+
 		int a1[10] = { 0+30,0+30,276-30,0+30,276-30,276-30,0+30,276-30,0+30,0+30 };
 		setfillstyle(SOLID_FILL, LIGHTGREEN);
 		fillpoly(5, a1);
@@ -213,6 +215,7 @@ public:
 		int b[10] = { 414,0,690,0,690,276,414,276,414,0 };
 		setfillstyle(SOLID_FILL, DARKGRAY);
 		fillpoly(5, b);
+
 
 
 		int b1[10] = { 414+30,0+30,690-30,0+30,690-30,276-30,414+30,276-30,414+30,0+ 30};
@@ -230,7 +233,7 @@ public:
 		int c[10] = { 0,414,276,414,276,690,0,690,0,414};
 		setfillstyle(SOLID_FILL, RED);
 		fillpoly(5, c);
-
+		
 		
 		
 		int c1[10] = { 0+30,414+30,276-30,414+30,276-30,690-30,0+30,690-30,0+30,414+30 };
@@ -246,202 +249,218 @@ public:
 		setfillstyle(SOLID_FILL, BLUE);
 		fillpoly(5, d);
 
+//
+//
+//
+//
+//		int d1[10] = { 414+30,414+30,690-30,414+30,690-30,690-30,414+30,690-30,414+30,414+30 };
+//		setfillstyle(SOLID_FILL, LIGHTBLUE);
+//		fillpoly(5, d1);
+
+		int A[10] = { 451,451,497,451,497,497,451,497,451,451 };// points of home cell of green 
+		C[HCN].setcellPos(Position(451, 451), Position(497, 497), BLUE); HCN++;
+		drawpoly(5, A);
+		int B[10] = { 607,451,653,451,653,497,607,497,607,451 };// points of home cell of green 
+		C[HCN].setcellPos(Position(607, 451), Position(653, 497), BLUE); HCN++;
+		drawpoly(5, B);
+		int y[10] = { 451,607,497,607,497,653,451,653,451,607 };// points of home cell of green 
+		C[HCN].setcellPos(Position(497,653), Position(451, 607), BLUE); HCN++;
+		drawpoly(5, y);
+		int z[10] = { 607,607,653,607,653,653,607,653,607,607 };// points of home cell of green 
+		C[HCN].setcellPos(Position(607, 607), Position(653, 653), BLUE); HCN++;
+		drawpoly(5, z);
 
 
-
-
-		int d1[10] = { 414+30,414+30,690-30,414+30,690-30,690-30,414+30,690-30,414+30,414+30 };
-		setfillstyle(SOLID_FILL, LIGHTBLUE);
-		fillpoly(5, d1);
 		setfillstyle(SOLID_FILL, BLUE);
 		fillellipse(474, 474, 20, 20);
 		fillellipse(474, 630, 20, 20);
 		fillellipse(630, 474, 20, 20);
 		fillellipse(630, 630, 20, 20);
-		int T1[8] = {276,276,414,276,345,345,276,276 };
-		setfillstyle(SOLID_FILL, DARKGRAY);
-		fillpoly(4, T1);
 
-		int T2[8] = { 414,276,414,414,345,345,414,276 };
-		setfillstyle(SOLID_FILL, BLUE);
-		fillpoly(4, T2);
-		int T3[8] = { 345,345,414,414,276,414,345,345 };
-		setfillstyle(SOLID_FILL, RED);
-		fillpoly(4, T3);
-		int T4[8] = { 276,276,345,345,276,414,276,276 };
-		setfillstyle(SOLID_FILL, GREEN);
-		fillpoly(4, T4);
-
-
-
-
-/*
-
-
-									BOX INDEX IN THE ARRAY. BETTER SEQUENCE CAN'T BE MAKE
-									==> Position of every box is saved ( TopLeft and ButtonRight + color)
-									==> box with color are declared as safe spot and their position are saved
-									S===> SAFE SPOT, TOTAL BOXES===> 76
-
-											  5 6 7
-											  4   8  52
-											  3   9  53
-											  2   10 54
-											  1   11 55
-											  0   12 56
-							46 47 48 49	50 51 	    13 14 15 16 17 18
-							45 67 68 69 70 71       61 60 59 58 57 19                    
-							44 43 42 41 40 39       25 24 23 22 21 20
-											38 62 26
-											37 63 27	
-											36 64 28
-											35 65 29
-											34 66 30
-                                            33 32 31
-													
-													*/
-		cc = LIGHTCYAN;
-
-
-		// GRAY
-		NOC = 0;
-		int SBN = 52;
-		for (int y = 0, k = 0; y < 276; y += 46, k++)
-		{
-			int a[10] = { 276,230-y,322,230 - y,322,276 - y,276,276 - y,276,230 - y };
-			if (k==3)
-			{
-				cc = DARKGRAY; C[NOC].Issave = true;
-			}
-			setfillstyle(SOLID_FILL, cc);
-			C[NOC].setcellPos(Position(276 , 230 - y), Position(322, 276 - y), cc);
-			fillpoly(5, a);
-			setfillstyle(SOLID_FILL, BLACK);
-			cc = BLACK;
-			NOC++;
-		}
-		
-		for (int x = 46,i=1; x < 138; x += 46,i++)
-		{
-			for (int y = 0,k=0; y < 276; y += 46,k++)
-			{
-				int a[10] = { 276+x,0 + y,322 + x,0 + y,322 + x,46 + y,276 + x,46+y,276 + x,0+y };
-				if ((i == 1 && k > 0))
-				{
-					cc = DARKGRAY; 
-					C[SBN].setcellPos(Position(276 + x, 0 + y), Position(322 + x, 46 + y), cc);
-					SBN++;
-
-				}
-				if ((i == 2 && k == 1))
-				{
-					cc = DARKGRAY;
-				}
-				setfillstyle(SOLID_FILL, cc);
-				C[NOC].setcellPos(Position(276 + x, 0 + y), Position(322 + x, 46 + y), cc);
-				fillpoly(5, a);
-				setfillstyle(SOLID_FILL, BLACK);
-				cc = BLACK;
-				NOC++;
-			}
-		}
-		
-		//blue
-		
-		for (int x = 0, k = 0; x < 276; x += 46, k++)
-		{
-			int g[10] = { 414 + x,276,460 + x,276,460 + x,322,414 + x,322,414 + x,276 };
-
-			if ( k == 3 )
-			{
-				cc = BLUE; C[NOC].Issave = true;
-			}
-			setfillstyle(SOLID_FILL, cc);
-			C[NOC].setcellPos(Position(276 + x, 414 ), Position(322 + x, 460), cc);
-			fillpoly(5, g);
-			setfillstyle(SOLID_FILL, BLACK);
-			cc = BLACK;
-			NOC++;
-		}
-		cc = BLACK;
-		for (int y = 46, i = 1; y < 138; y += 46, i++)
-		{
-			for (int x = 230, k = 0; x >= 0; x -= 46, k++)
-			{
-				int g[10] = { 414 + x,276 + y,460 + x,276 + y,460 + x,322 + y,414 + x,322 + y,414 + x,276 + y };
-
-				if ((i == 1 && k != 0))
-				{
-					cc = BLUE; C[SBN].Issave = true;
-					C[SBN].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-					SBN++;
-				}
-				if ((i == 2 && k == 1))
-				{
-					cc = BLUE; C[NOC].Issave = true;
-				}
-				setfillstyle(SOLID_FILL, cc);
-				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-				fillpoly(5, g);
-				setfillstyle(SOLID_FILL, BLACK);
-				cc = BLACK;
-				NOC++;
-			}
-		}
-		////RED
-		SBN = 66;
-		for (int x = 92, i = 0; x >= 0; x -= 46, i++)
-		{
-			for (int y = 0, k = 0; y < 276; y += 46, k++)
-			{
-				int a[10] = { 276 + x,414 + y,322 + x,414 + y,322 + x,460 + y,276 + x,460 + y,276 + x,414 + y };
-				if ((i == 0 && k == 3)  || (i == 2 && k == 4))
-				{
-					cc = RED; C[NOC].Issave = true;
-				}
-				if ((i == 1 && k < 5))
-				{
-					cc = RED; C[SBN].Issave = true;
-					C[SBN].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-					SBN--;
-				}
-				setfillstyle(SOLID_FILL, cc);
-				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-				fillpoly(5, a);
-				setfillstyle(SOLID_FILL, BLACK);
-				cc = BLACK;
-				NOC++;
-			}
-		}
-
-		////
-		////// GREEN
-		////
-		SBN = 71;
-		for (int y = 92, i = 0; y >=0; y -= 46, i++)
-		{
-			for (int x = 230, k = 0; x >= 0; x -= 46, k++)
-			{
-				int g[10] = { 0 + x,276 + y,46 + x,276 + y,46 + x,322 + y,0 + x,322 + y,0 + x,276 + y };
-				if ((i == 0 && k == 3)  || (i == 2 && k == 4))
-				{
-					cc = GREEN; C[NOC].Issave = true;
-				}
-				if ((i == 1 && k < 5))
-				{
-					cc = GREEN; C[SBN].Issave = true;
-
-					C[SBN].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-					SBN--;
-				}
-				setfillstyle(SOLID_FILL, cc);
-				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-				fillpoly(5, g);
-				setfillstyle(SOLID_FILL, BLACK);
-				cc = BLACK;
-				NOC++;
-			}
-		}
+//		int T1[8] = {276,276,414,276,345,345,276,276 };
+//		setfillstyle(SOLID_FILL, DARKGRAY);
+//		fillpoly(4, T1);
+//
+//		int T2[8] = { 414,276,414,414,345,345,414,276 };
+//		setfillstyle(SOLID_FILL, BLUE);
+//		fillpoly(4, T2);
+//		int T3[8] = { 345,345,414,414,276,414,345,345 };
+//		setfillstyle(SOLID_FILL, RED);
+//		fillpoly(4, T3);
+//		int T4[8] = { 276,276,345,345,276,414,276,276 };
+//		setfillstyle(SOLID_FILL, GREEN);
+//		fillpoly(4, T4);
+//
+//
+//
+//
+///*
+//
+//
+//									BOX INDEX IN THE ARRAY. BETTER SEQUENCE CAN'T BE MAKE
+//									==> Position of every box is saved ( TopLeft and ButtonRight + color)
+//									==> box with color are declared as safe spot and their position are saved
+//									S===> SAFE SPOT, TOTAL BOXES===> 76
+//
+//											  5 6 7
+//											  4   8  52
+//											  3   9  53
+//											  2   10 54
+//											  1   11 55
+//											  0   12 56
+//							46 47 48 49	50 51 	    13 14 15 16 17 18
+//							45 67 68 69 70 71       61 60 59 58 57 19                    
+//							44 43 42 41 40 39       25 24 23 22 21 20
+//											38 62 26
+//											37 63 27	
+//											36 64 28
+//											35 65 29
+//											34 66 30
+//                                            33 32 31
+//													
+//													*/
+//		cc = LIGHTCYAN;
+//
+//
+//		// GRAY
+//		NOC = 0;
+//		int SBN = 52;
+//		for (int y = 0, k = 0; y < 276; y += 46, k++)
+//		{
+//			int a[10] = { 276,230-y,322,230 - y,322,276 - y,276,276 - y,276,230 - y };
+//			if (k==3)
+//			{
+//				cc = DARKGRAY; C[NOC].Issave = true;
+//			}
+//			setfillstyle(SOLID_FILL, cc);
+//			C[NOC].setcellPos(Position(276 , 230 - y), Position(322, 276 - y), cc);
+//			fillpoly(5, a);
+//			setfillstyle(SOLID_FILL, BLACK);
+//			cc = BLACK;
+//			NOC++;
+//		}
+//		
+//		for (int x = 46,i=1; x < 138; x += 46,i++)
+//		{
+//			for (int y = 0,k=0; y < 276; y += 46,k++)
+//			{
+//				int a[10] = { 276+x,0 + y,322 + x,0 + y,322 + x,46 + y,276 + x,46+y,276 + x,0+y };
+//				if ((i == 1 && k > 0))
+//				{
+//					cc = DARKGRAY; 
+//					C[SBN].setcellPos(Position(276 + x, 0 + y), Position(322 + x, 46 + y), cc);
+//					SBN++;
+//
+//				}
+//				if ((i == 2 && k == 1))
+//				{
+//					cc = DARKGRAY;
+//				}
+//				setfillstyle(SOLID_FILL, cc);
+//				C[NOC].setcellPos(Position(276 + x, 0 + y), Position(322 + x, 46 + y), cc);
+//				fillpoly(5, a);
+//				setfillstyle(SOLID_FILL, BLACK);
+//				cc = BLACK;
+//				NOC++;
+//			}
+//		}
+//		
+//		//blue
+//		
+//		for (int x = 0, k = 0; x < 276; x += 46, k++)
+//		{
+//			int g[10] = { 414 + x,276,460 + x,276,460 + x,322,414 + x,322,414 + x,276 };
+//
+//			if ( k == 3 )
+//			{
+//				cc = BLUE; C[NOC].Issave = true;
+//			}
+//			setfillstyle(SOLID_FILL, cc);
+//			C[NOC].setcellPos(Position(276 + x, 414 ), Position(322 + x, 460), cc);
+//			fillpoly(5, g);
+//			setfillstyle(SOLID_FILL, BLACK);
+//			cc = BLACK;
+//			NOC++;
+//		}
+//		cc = BLACK;
+//		for (int y = 46, i = 1; y < 138; y += 46, i++)
+//		{
+//			for (int x = 230, k = 0; x >= 0; x -= 46, k++)
+//			{
+//				int g[10] = { 414 + x,276 + y,460 + x,276 + y,460 + x,322 + y,414 + x,322 + y,414 + x,276 + y };
+//
+//				if ((i == 1 && k != 0))
+//				{
+//					cc = BLUE; C[SBN].Issave = true;
+//					C[SBN].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+//					SBN++;
+//				}
+//				if ((i == 2 && k == 1))
+//				{
+//					cc = BLUE; C[NOC].Issave = true;
+//				}
+//				setfillstyle(SOLID_FILL, cc);
+//				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+//				fillpoly(5, g);
+//				setfillstyle(SOLID_FILL, BLACK);
+//				cc = BLACK;
+//				NOC++;
+//			}
+//		}
+//		////RED
+//		SBN = 66;
+//		for (int x = 92, i = 0; x >= 0; x -= 46, i++)
+//		{
+//			for (int y = 0, k = 0; y < 276; y += 46, k++)
+//			{
+//				int a[10] = { 276 + x,414 + y,322 + x,414 + y,322 + x,460 + y,276 + x,460 + y,276 + x,414 + y };
+//				if ((i == 0 && k == 3)  || (i == 2 && k == 4))
+//				{
+//					cc = RED; C[NOC].Issave = true;
+//				}
+//				if ((i == 1 && k < 5))
+//				{
+//					cc = RED; C[SBN].Issave = true;
+//					C[SBN].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+//					SBN--;
+//				}
+//				setfillstyle(SOLID_FILL, cc);
+//				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+//				fillpoly(5, a);
+//				setfillstyle(SOLID_FILL, BLACK);
+//				cc = BLACK;
+//				NOC++;
+//			}
+//		}
+//
+//		////
+//		////// GREEN
+//		////
+//		SBN = 71;
+//		for (int y = 92, i = 0; y >=0; y -= 46, i++)
+//		{
+//			for (int x = 230, k = 0; x >= 0; x -= 46, k++)
+//			{
+//				int g[10] = { 0 + x,276 + y,46 + x,276 + y,46 + x,322 + y,0 + x,322 + y,0 + x,276 + y };
+//				if ((i == 0 && k == 3)  || (i == 2 && k == 4))
+//				{
+//					cc = GREEN; C[NOC].Issave = true;
+//				}
+//				if ((i == 1 && k < 5))
+//				{
+//					cc = GREEN; C[SBN].Issave = true;
+//
+//					C[SBN].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+//					SBN--;
+//				}
+//				setfillstyle(SOLID_FILL, cc);
+//				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+//				fillpoly(5, g);
+//				setfillstyle(SOLID_FILL, BLACK);
+//				cc = BLACK;
+//				NOC++;
+//			}
+//		}
 	}
 
 	bool isWin()
