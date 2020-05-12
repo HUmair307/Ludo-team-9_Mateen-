@@ -20,7 +20,7 @@ protected:
 	Position P;
 	colors cc = WHITE;
 	Dice dice;
-
+	int HCN = 0;
 	/*
 	 YELLOW
 									          
@@ -202,12 +202,50 @@ public:
 		setfillstyle(SOLID_FILL, GREEN);
 		fillpoly(5, a);
 		int a1[10] = { 0+30,0+30,276-30,0+30,276-30,276-30,0+30,276-30,0+30,0+30 };
+		int h[10] = { 37,37,83,37,83,83,37,83,37,37 };// points of home cell of green 
+		C[HCN].setcellPos(Position(37, 37), Position(83, 83), GREEN); HCN++;
+		drawpoly(5, h);
+		int j[10] = { 37 + 156,37,83 + 156,37,83 + 156,83,83 + 156 - 46,83,37 + 156,37 };// points of home cell of green 
+		C[HCN].setcellPos(Position(37 + 156, 37), Position(83 + 156, 83), GREEN); HCN++;
+		drawpoly(5, j);
+		int k[10] = { 37 + 156,37 + 156,83 + 156,37 + 156,83 + 156,37 + 156 + 46,83 + 156 - 46,37 + 156 + 46, 37 + 156,37 + 156 };// points of home cell of green 
+		C[HCN].setcellPos(Position(37 + 156, 37 + 156), Position(83 + 156, 37 + 156 + 46), GREEN); HCN++;
+		drawpoly(5, k);
+		int l[10] = { 37,37 + 156,83,37 + 156,83,37 + 156 + 46,83 - 46,37 + 156 + 46,37,37 + 156 };// points of home cell of green 
+		C[HCN].setcellPos(Position(37, 37 + 156), Position(83, 37 + 156 + 46), GREEN); HCN++;
+		drawpoly(5, l);
 		setfillstyle(SOLID_FILL, LIGHTGREEN);
+
+		int m[10] = { 451,37,497,37,497,83,451,83,451,37 };// points of home cell of green 
+		C[HCN].setcellPos(Position(451, 37), Position(497, 83), DARKGRAY); HCN++;
+		drawpoly(5, m);
+		int n[10] = { 607,37,653,37,653,83,607,83,607,37 };// points of home cell of green 
+		C[HCN].setcellPos(Position(607, 37), Position(653, 83), DARKGRAY); HCN++;
+		drawpoly(5, n);
+		int o[10] = { 451,193,497,193,497,239,451,239,451,193 };// points of home cell of green 
+		C[HCN].setcellPos(Position(451, 193), Position(497, 239), DARKGRAY); HCN++;
+		drawpoly(5, o);
+		int p[10] = { 607,193,653,193,653,239,607,239,607,193 };// points of home cell of green 
+		C[HCN].setcellPos(Position(607, 193), Position(653, 239), GREEN); HCN++;
+		drawpoly(5, p);
 		fillpoly(5, a1);
 		setfillstyle(SOLID_FILL, GREEN);
 		fillellipse(60, 60, 20, 20);
 		fillellipse(216, 60, 20, 20);
 		fillellipse(60, 216, 20, 20);
+		int r[10] = { 37,451,83,451,83,497,37,497,37,451 };// points of home cell of green 
+		C[HCN].setcellPos(Position(37, 450), Position(83, 496), RED); HCN++;
+		drawpoly(5, r);
+		int x[10] = { 193,451,239,451,239,497,193,497,193,451 };// points of home cell of green 
+		C[HCN].setcellPos(Position(193, 450), Position(239, 496), RED); HCN++;
+		drawpoly(5, x);
+		int y[10] = { 37,606,83,606,83,652,37,652,37,606 };// points of home cell of green 
+		C[HCN].setcellPos(Position(37, 606), Position(83, 652), DARKGRAY); HCN++;
+		drawpoly(5, y);
+		int z[10] = { 193,606,239,606,239,652,193,652,193,606 };// points of home cell of green 
+		C[HCN].setcellPos(Position(193, 606), Position(239, 652), GREEN); HCN++;
+		drawpoly(5, z);
+
 		fillellipse(216, 216, 20, 20);
 
 		int b[10] = { 414,0,690,0,690,276,414,276,414,0 };
@@ -218,6 +256,18 @@ public:
 		int b1[10] = { 414+30,0+30,690-30,0+30,690-30,276-30,414+30,276-30,414+30,0+ 30};
 		setfillstyle(SOLID_FILL, LIGHTGRAY);
 		fillpoly(5, b1);
+		int A[10] = { 451,451,497,451,497,497,451,497,451,451 };// points of home cell of green 
+		C[HCN].setcellPos(Position(451, 451), Position(497, 497), BLUE); HCN++;
+		drawpoly(5, A);
+		int B[10] = { 607,451,653,451,653,497,607,497,607,451 };// points of home cell of green 
+		C[HCN].setcellPos(Position(607, 451), Position(653, 497), BLUE); HCN++;
+		drawpoly(5, B);
+		int y[10] = { 451,607,497,607,497,653,451,653,451,607 };// points of home cell of green 
+		C[HCN].setcellPos(Position(497, 653), Position(451, 607), BLUE); HCN++;
+		drawpoly(5, y);
+		int z[10] = { 607,607,653,607,653,653,607,653,607,607 };// points of home cell of green 
+		C[HCN].setcellPos(Position(607, 607), Position(653, 653), BLUE); HCN++;
+		drawpoly(5, z);
 		setfillstyle(SOLID_FILL, DARKGRAY);
 
 		fillellipse(474, 60, 20, 20);
@@ -300,7 +350,7 @@ public:
                                             33 32 31
 													
 													*/
-		cc = LIGHTCYAN;
+		cc = LIGHTCYAN ;
 
 
 		// GRAY
