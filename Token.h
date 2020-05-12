@@ -15,7 +15,7 @@ public:
 	int NoOfStepsTaken;
 	int TokenLocationOnBoard;
 	// int TokenReachDest;
-	// char status;
+	bool Homestatus;
 
 
 public:
@@ -32,6 +32,7 @@ public:
 		HomeCell = HomeIndex;
 		initialLocation = IntialCell;
 		TokenLocationOnBoard = HomeIndex;
+		Homestatus = true;
 	}
 	
 	virtual void DrawToken(Position P)
@@ -46,6 +47,11 @@ public:
 	colors getColor()
 	{
 		return color;
+	}
+	
+	bool isAtHome()
+	{
+		return HomeStatus;
 	}
 
 
