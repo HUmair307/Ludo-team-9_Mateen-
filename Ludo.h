@@ -46,84 +46,7 @@ protected:
 
 public:
 	Ludo(){}
-	void AssignIndex()
-	{
-		NOC = 5;
-		for (int i = 0; i < 2; i++)
-		{
-			if (i == 1)
-				NOC = 6;
-			for (int k = 0; k < 5; k++)
-			{
-				C[NOC].index++;
-				if (i == 0)
-					NOC--;
-				else
-					NOC++;
-				if (i == 1 && k == 1)
-					break;
-			}
-		}
-		//BLUE
-		for (int y = 0, i = 0; y < 138; y += 46, i++)
-		{
-			for (int x = 0, k = 0; x < 276; x += 46, k++)
-			{
-				int g[10] = { 414 + x,276 + y,460 + x,276 + y,460 + x,322 + y,414 + x,322 + y,414 + x,276 + y };
-
-				if ((i == 0 && k == 3) || (i == 1 && k < 5) || (i == 2 && k == 4))
-				{
-					cc = BLUE; C[NOC].Issave = true;
-				}
-				setfillstyle(SOLID_FILL, cc);
-				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-				fillpoly(5, g);
-				setfillstyle(SOLID_FILL, WHITE);
-				cc = WHITE;
-				NOC++;
-			}
-		}
-
-		// GREEN
-
-
-		for (int y = 0, i = 0; y < 138; y += 46, i++)
-		{
-			for (int x = 0, k = 0; x < 276; x += 46, k++)
-			{
-				int g[10] = { 0 + x,276 + y,46 + x,276 + y,46 + x,322 + y,0 + x,322 + y,0 + x,276 + y };
-				if ((i == 0 && k == 1) || (i == 1 && k > 0) || (i == 2 && k == 2))
-				{
-					cc = GREEN; C[NOC].Issave = true;
-				}
-				setfillstyle(SOLID_FILL, cc);
-				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-				fillpoly(5, g);
-				setfillstyle(SOLID_FILL, WHITE);
-				cc = WHITE;
-				NOC++;
-			}
-		}
-		//RED
-		for (int x = 0, i = 0; x < 138; x += 46, i++)
-		{
-			for (int y = 0, k = 0; y < 276; y += 46, k++)
-			{
-				int a[10] = { 276 + x,414 + y,322 + x,414 + y,322 + x,460 + y,276 + x,460 + y,276 + x,414 + y };
-				if ((i == 0 && k == 4) || (i == 1 && k < 5) || (i == 2 && k == 3))
-				{
-					cc = RED; C[NOC].Issave = true;
-				}
-				setfillstyle(SOLID_FILL, cc);
-				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-				fillpoly(5, a);
-				setfillstyle(SOLID_FILL, WHITE);
-				cc = WHITE;
-				NOC++;
-			}
-		}
-
-	}
+	
 	void InitBoard()
 	{
 			// We don't really need this?
@@ -205,16 +128,29 @@ public:
 		int h[10] = { 37,37,83,37,83,83,37,83,37,37 };// points of home cell of green 
 		C[HCN].setcellPos(Position(37, 37), Position(83, 83), GREEN); HCN++;
 		drawpoly(5, h);
-		int j[10] = { 37 + 156,37,83 + 156,37,83 + 156,83,83 + 156 - 46,83,37 + 156,37 };// points of home cell of green 
-		C[HCN].setcellPos(Position(37 + 156, 37), Position(83 + 156, 83), GREEN); HCN++;
+		int j[10] = { 193,37,239,37,239,83,193,83,193,37 };// points of home cell of green 
+		C[HCN].setcellPos(Position(193,37), Position(239,83), GREEN); HCN++;
 		drawpoly(5, j);
-		int k[10] = { 37 + 156,37 + 156,83 + 156,37 + 156,83 + 156,37 + 156 + 46,83 + 156 - 46,37 + 156 + 46, 37 + 156,37 + 156 };// points of home cell of green 
-		C[HCN].setcellPos(Position(37 + 156, 37 + 156), Position(83 + 156, 37 + 156 + 46), GREEN); HCN++;
+		int k[10] = { 37,193,83,193,83,239,37,239,37,193};// points of home cell of green 
+		C[HCN].setcellPos(Position(37, 193), Position(37, 239), GREEN); HCN++;
 		drawpoly(5, k);
-		int l[10] = { 37,37 + 156,83,37 + 156,83,37 + 156 + 46,83 - 46,37 + 156 + 46,37,37 + 156 };// points of home cell of green 
-		C[HCN].setcellPos(Position(37, 37 + 156), Position(83, 37 + 156 + 46), GREEN); HCN++;
+		int l[10] = { 193,193,239,193,239,239,193,239,193,193};// points of home cell of green 
+		C[HCN].setcellPos(Position(193, 193), Position(239, 239), GREEN); HCN++;
 		drawpoly(5, l);
 		setfillstyle(SOLID_FILL, LIGHTGREEN);
+		fillpoly(5, a1);
+		setfillstyle(SOLID_FILL, GREEN);
+		fillellipse(60, 60, 20, 20);
+		fillellipse(216, 60, 20, 20);
+		fillellipse(60, 216, 20, 20);
+		fillellipse(216, 216, 20, 20);
+/// GREEN IS ENDED.
+
+		int b[10] = { 414,0,690,0,690,276,414,276,414,0 };
+		setfillstyle(SOLID_FILL, DARKGRAY);
+		fillpoly(5, b);
+
+
 
 		int m[10] = { 451,37,497,37,497,83,451,83,451,37 };// points of home cell of green 
 		C[HCN].setcellPos(Position(451, 37), Position(497, 83), DARKGRAY); HCN++;
@@ -226,36 +162,33 @@ public:
 		C[HCN].setcellPos(Position(451, 193), Position(497, 239), DARKGRAY); HCN++;
 		drawpoly(5, o);
 		int p[10] = { 607,193,653,193,653,239,607,239,607,193 };// points of home cell of green 
-		C[HCN].setcellPos(Position(607, 193), Position(653, 239), GREEN); HCN++;
+		C[HCN].setcellPos(Position(607, 193), Position(653, 239), DARKGRAY); HCN++;
 		drawpoly(5, p);
-		fillpoly(5, a1);
-		setfillstyle(SOLID_FILL, GREEN);
-		fillellipse(60, 60, 20, 20);
-		fillellipse(216, 60, 20, 20);
-		fillellipse(60, 216, 20, 20);
-		int r[10] = { 37,451,83,451,83,497,37,497,37,451 };// points of home cell of green 
-		C[HCN].setcellPos(Position(37, 450), Position(83, 496), RED); HCN++;
-		drawpoly(5, r);
-		int x[10] = { 193,451,239,451,239,497,193,497,193,451 };// points of home cell of green 
-		C[HCN].setcellPos(Position(193, 450), Position(239, 496), RED); HCN++;
-		drawpoly(5, x);
-		int y[10] = { 37,606,83,606,83,652,37,652,37,606 };// points of home cell of green 
-		C[HCN].setcellPos(Position(37, 606), Position(83, 652), DARKGRAY); HCN++;
-		drawpoly(5, y);
-		int z[10] = { 193,606,239,606,239,652,193,652,193,606 };// points of home cell of green 
-		C[HCN].setcellPos(Position(193, 606), Position(239, 652), GREEN); HCN++;
-		drawpoly(5, z);
-
-		fillellipse(216, 216, 20, 20);
-
-		int b[10] = { 414,0,690,0,690,276,414,276,414,0 };
-		setfillstyle(SOLID_FILL, DARKGRAY);
-		fillpoly(5, b);
-
-
-		int b1[10] = { 414+30,0+30,690-30,0+30,690-30,276-30,414+30,276-30,414+30,0+ 30};
+		
+		int b1[10] = { 414 + 30,0 + 30,690 - 30,0 + 30,690 - 30,276 - 30,414 + 30,276 - 30,414 + 30,0 + 30 };
 		setfillstyle(SOLID_FILL, LIGHTGRAY);
 		fillpoly(5, b1);
+
+
+		setfillstyle(SOLID_FILL, DARKGRAY);
+
+		fillellipse(474, 60, 20, 20);
+		fillellipse(630, 60, 20, 20);
+		fillellipse(474, 216, 20, 20);
+		fillellipse(630, 216, 20, 20);
+/// DARKGRAY HAS ENDED
+
+
+
+
+		int d[10] = { 414,414,690,414,690,690,414,690,414,414 };
+		setfillstyle(SOLID_FILL, BLUE);
+		fillpoly(5, d);
+
+
+
+
+		
 		int A[10] = { 451,451,497,451,497,497,451,497,451,451 };// points of home cell of green 
 		C[HCN].setcellPos(Position(451, 451), Position(497, 497), BLUE); HCN++;
 		drawpoly(5, A);
@@ -268,20 +201,36 @@ public:
 		int z[10] = { 607,607,653,607,653,653,607,653,607,607 };// points of home cell of green 
 		C[HCN].setcellPos(Position(607, 607), Position(653, 653), BLUE); HCN++;
 		drawpoly(5, z);
-		setfillstyle(SOLID_FILL, DARKGRAY);
+		
+		int d1[10] = { 414 + 30,414 + 30,690 - 30,414 + 30,690 - 30,690 - 30,414 + 30,690 - 30,414 + 30,414 + 30 };
+		setfillstyle(SOLID_FILL, LIGHTBLUE);
+		fillpoly(5, d1);
+		setfillstyle(SOLID_FILL, BLUE);
+		fillellipse(474, 474, 20, 20);
+		fillellipse(474, 630, 20, 20);
+		fillellipse(630, 474, 20, 20);
+		fillellipse(630, 630, 20, 20);
 
-		fillellipse(474, 60, 20, 20);
-		fillellipse(630, 60, 20, 20);
-		fillellipse(474, 216, 20, 20);
-		fillellipse(630, 216, 20, 20);
-
+//BLUE HAS ENDED
 
 
 		int c[10] = { 0,414,276,414,276,690,0,690,0,414};
 		setfillstyle(SOLID_FILL, RED);
 		fillpoly(5, c);
 
-		
+		int r[10] = { 37,451,83,451,83,497,37,497,37,451 };// points of home cell of green 
+		C[HCN].setcellPos(Position(37, 450), Position(83, 496), RED); HCN++;
+		drawpoly(5, r);
+		int X[10] = { 193,451,239,451,239,497,193,497,193,451 };// points of home cell of green 
+		C[HCN].setcellPos(Position(193, 450), Position(239, 496), RED); HCN++;
+		drawpoly(5, X);
+		int Y[10] = { 37,606,83,606,83,652,37,652,37,606 };// points of home cell of green 
+		drawpoly(5, Y);
+		C[HCN].setcellPos(Position(37, 606), Position(83, 652), RED); HCN++;
+		int Z[10] = { 193,606,239,606,239,652,193,652,193,606 };// points of home cell of green 
+		drawpoly(5, Z);
+		C[HCN].setcellPos(Position(193, 606), Position(239, 652), RED); HCN++;
+
 		
 		int c1[10] = { 0+30,414+30,276-30,414+30,276-30,690-30,0+30,690-30,0+30,414+30 };
 		setfillstyle(SOLID_FILL, LIGHTRED);
@@ -292,22 +241,12 @@ public:
 		fillellipse(60, 474, 20, 20);
 		fillellipse(60, 630, 20, 20);
 
-		int d[10] = { 414,414,690,414,690,690,414,690,414,414 };
-		setfillstyle(SOLID_FILL, BLUE);
-		fillpoly(5, d);
 
 
+// RED HAS ENDED
+		
 
 
-
-		int d1[10] = { 414+30,414+30,690-30,414+30,690-30,690-30,414+30,690-30,414+30,414+30 };
-		setfillstyle(SOLID_FILL, LIGHTBLUE);
-		fillpoly(5, d1);
-		setfillstyle(SOLID_FILL, BLUE);
-		fillellipse(474, 474, 20, 20);
-		fillellipse(474, 630, 20, 20);
-		fillellipse(630, 474, 20, 20);
-		fillellipse(630, 630, 20, 20);
 		int T1[8] = {276,276,414,276,345,345,276,276 };
 		setfillstyle(SOLID_FILL, DARKGRAY);
 		fillpoly(4, T1);
@@ -350,7 +289,7 @@ public:
                                             33 32 31
 													
 													*/
-		cc = LIGHTCYAN ;
+		cc = BLACK ;
 
 
 		// GRAY
