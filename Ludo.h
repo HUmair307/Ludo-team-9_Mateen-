@@ -2,6 +2,7 @@
 
 #include "Dice.h"
 #include "Grid.h"
+#include<string.h>
 using namespace std;
 class Ludo :public Player,public Cell
 {
@@ -444,6 +445,15 @@ public:
 		drawpoly(5, db3);
 		C[K].setcellPos(Position(892, 150), Position(938, 196), BLACK); 
 
+		
+	}
+
+	void DisplayDiceNo()
+	{
+		int diceindex = 92;
+		dice.diceno[0] = 6, dice.diceno[1] = 6, dice.diceno[2] = 4;
+		Position P = C[diceindex].getcellcenter(C[diceindex].getTL(), C[diceindex].getBR());
+		outtextxy(P.x, P.y, (char*)dice.diceno[0]);
 
 	}
 
