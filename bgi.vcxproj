@@ -66,7 +66,6 @@
     <ClCompile Include="BlueToken.cpp" />
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="dibutil.cxx" />
-    <ClCompile Include="Dice.cpp" />
     <ClCompile Include="drawing.cxx" />
     <ClCompile Include="file.cxx" />
     <ClCompile Include="GreenToken.cpp" />

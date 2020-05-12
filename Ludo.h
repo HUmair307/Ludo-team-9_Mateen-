@@ -1,11 +1,7 @@
 #pragma once
 
-#include "Player.h"
-#include "Token.h"
 #include "Dice.h"
 #include "Grid.h"
-#include "Position.h"
-#include "Cell.h"
 using namespace std;
 class Ludo :public Player,public Cell
 {
@@ -16,7 +12,7 @@ protected:
 	int NoOfPlayers, Turn, MaxNoSteps, WC;
 	int DU;
 	int NOC=0;// number of cells
-	Cell C[92];
+	Cell C[95];
 	Position P;
 	colors cc = WHITE;
 	Dice dice;
@@ -120,7 +116,7 @@ public:
 	}
 	void DisplayBoard()
 	{
-		initwindow(1100, 800, "LUDO");
+		initwindow(1300, 800, "LUDO");
 		int a[10]= { 0,0,276,0,276,276,0,276,0,0};
 		setfillstyle(SOLID_FILL, GREEN);
 		fillpoly(5, a);
@@ -431,6 +427,24 @@ public:
 				NOC++;
 			}
 		}
+
+
+
+		// arraay ka index for dice cell is 92,93,94;
+		int K = 92;
+		int db1[10] = { 800,150,846,150,846,196,800,196,800,150 };
+		drawpoly(5, db1);
+		C[K].setcellPos(Position(800, 150), Position(846, 196), BLACK); K++;
+
+		int db2[10] = { 846,150,892,150,892,196,846,196,846,150 };
+		drawpoly(5, db2);
+		C[K].setcellPos(Position(846, 150), Position(892, 196), BLACK); K++;
+
+		int db3[10] = { 892,150,938,150,938,196,892,196,892,150 };
+		drawpoly(5, db3);
+		C[K].setcellPos(Position(892, 150), Position(938, 196), BLACK); 
+
+
 	}
 
 	bool isWin()

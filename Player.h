@@ -1,7 +1,5 @@
 #pragma once
 #include"Token.h"
-#include "Dice.h"
-using namespace std;
 class Player
 {
 public:
