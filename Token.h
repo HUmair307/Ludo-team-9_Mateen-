@@ -17,7 +17,6 @@ public:
 	// int TokenReachDest;
 	bool Homestatus;
 
-
 public:
 
 	Token()
@@ -51,7 +50,7 @@ public:
 	
 	bool isAtHome()
 	{
-		return HomeStatus;
+		return Homestatus;
 	}
 
 	int StepsTaken()
@@ -62,8 +61,8 @@ public:
 	void Killed()
 	{
 		NoOfStepsTaken = 0;
-		TokenLocationOnBoard = HomeIndex;
-		HomeStatus = true;
+		TokenLocationOnBoard = HomeCell;
+		Homestatus = true;
 	}
 };
 
