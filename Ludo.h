@@ -494,8 +494,9 @@ public:
 				if (dice.DiceNoAtIndex(0)==6)
 					return true;
 			}
-			else
+			else if (Players[Turn]->PlayerTokens[i].StepsTaken() + dice.DiceNoAtIndex(0) <= 55)
 				return true;
+			return false;
 		}
 	}
 	void Play()
