@@ -534,18 +534,31 @@ public:
 	
 	bool isValidSelection(int CellIndex, int DiceNo)
 	{
-		if (Grid[0][CellIndex]->isAtHome())
+		if (Grid[CellIndex]->isAtHome())
 		{
 			if (DiceNo == 6)
 				return true;
 			else
 				return false;
 		}
-		if (Grid[0][CellIndex]->StepsTaken() + DiceNo >= 55)
+		if (Grid[CellIndex]->StepsTaken() + DiceNo >= 55)
 			return true;
 		return false;
 	}
 	
+	bool canContinue()
+	{
+		for(int i=0;i<4;++i)
+		{
+			if (Players[Turn]->PlayerTokens[i].isAtHome())
+			{
+				if (dice.DiceNoAtIndex(0)==6)
+					return true;
+			}
+			else
+				return true;
+		}
+	}
 	void Play()
 	{
 		init();
