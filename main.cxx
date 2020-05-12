@@ -401,15 +401,11 @@ using namespace std;
 //   return (int)y_value;
 //}
 
-
-
-
 int main()
 {
 	Ludo ludo;
-	ludo.Play();
-
-
+	//ludo.Play();
+	ludo.DisplayBoard();
 	cout << "I m here";
 	system("Pause");
 }

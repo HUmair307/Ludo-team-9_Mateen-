@@ -1,22 +1,22 @@
+
+
 #pragma once
-
-#include <vector>
 #include <iostream>
-
+#include <vector>
+#include <time.h>
 using namespace std;
 class Dice
 {
-
-	vector<int> DiceNo;
-
 public:
+	vector<int>diceno;
+	void reset();
+	void rolladice();
+	int randomgen();
 
-	void Reset()
+	int DiceNoAtIndex(int i)
 	{
+		return diceno[i];
+	}
 
-	}
-	void RollaDice()
-	{
-	}
 };
 
