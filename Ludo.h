@@ -531,6 +531,21 @@ public:
 		return -1;
 	}
 	
+	
+	bool isValidSelection(int CellIndex, int DiceNo)
+	{
+		if (Grid[0][CellIndex]->isAtHome())
+		{
+			if (DiceNo == 6)
+				return true;
+			else
+				return false;
+		}
+		if (Grid[0][CellIndex]->StepsTaken() + DiceNo >= 55)
+			return true;
+		return false;
+	}
+	
 	void Play()
 	{
 		init();
