@@ -23,6 +23,7 @@ protected:
 	colors cc = WHITE;
 	Dice dice;
 	int HCN = 76;
+	vector<int>WinPlayers;
 	/*
 	 YELLOW
 									          
@@ -72,9 +73,18 @@ public:
 
 	void ChangeTurn()
 	{
-		++Turn;
-		if (Turn == NoOfPlayers)
-			Turn = 0;
+		do
+		{
+			++Turn;
+			if (Turn == NoOfPlayers)
+				Turn = 0;
+			for(int i=0;i<WinPLayers.size();i++)
+			{
+				if (Turn==WinPLayers[i])
+					continue;
+			}
+			break;
+		}while(true);
 		inttocolor();
 	}
 
@@ -533,31 +543,12 @@ public:
 		Players[1]= new Player(DARKGRAY);
 		Players[2]= new Player(BLUE);
 		
-		/*
-		
-											  5 6 7
-											  4   8  52
-											  3   9  53
-											  2   10 54
-											  1   11 55
-											  0   12 56
-							46 47 48 49	50 51 	    13 14 15 16 17 18
-							45 67 68 69 70 71       61 60 59 58 57 19                    
-							44 43 42 41 40 39       25 24 23 22 21 20
-											38 62 26
-											37 63 27	
-											36 64 28
-											35 65 29
-											34 66 30
-                                            33 32 31
-		
-		*/
 			for (int i = 0; i < 4; i++)
 			{
-				Players[2]->PlayerTokens[i] = new BlueToken(BLUE, 84 + i, 21,57);
-				Players[3]->PlayerTokens[i] = new RedToken(RED, 88+i, 34,62);
-				Players[0]->PlayerTokens[i] = new GreenToken(GREEN, 76 + i, 47,67);
-				Players[1]->PlayerTokens[i] = new YellowToken(DARKGRAY, 80 + i, 8,52);
+				Players[2]->PlayerTokens[i] = new BlueToken(BLUE, 84 + i, 21);
+				Players[3]->PlayerTokens[i] = new RedToken(RED, 88+i, 34);
+				Players[0]->PlayerTokens[i] = new GreenToken(GREEN, 76 + i, 47);
+				Players[1]->PlayerTokens[i] = new YellowToken(DARKGRAY, 80 + i, 8);
 			}
 			int m = 0;
 			for (int  i = 0; i < 4; i++)
@@ -647,14 +638,14 @@ public:
 				Des-=76;
 			}
 			Grid[TokenIndex]->addSteps(DiceNo);
-			if (Grid[TokenIndex]->StepsTaken() > Grid[TokenIndex]->getJumpStep())
+			if (Grid[TokenIndex]->StepsTaken() > Grid[TokenIndex]->JumpStep())
 			{
-				Des = Grid[TokenIndex]->JumpIndex+(Grid[TokenIndex]->StepsTaken()-Grid[TokenIndex]->getJumpStep()-1);
+				Des = Grid[TokenIndex]->JumpIndex()+(Grid[TokenIndex]->StepsTaken()-Grid[TokenIndex]->JumpStep()-1);
 			}
 			else if (Grid[Des]!=nullptr)
 			{
 				Grid[Grid[Des]->getHomeIndex()] = Grid[Des];
-				// Draw Token at Grid[Des]->getHomeIndex()S
+				// Draw Token at Grid[Des]->getHomeIndex()
 				Grid[Des]->changeHomeStatus();
 			}
 			Grid[Des]=Grid[TokenIndex];
@@ -702,6 +693,7 @@ public:
 			if (isWin())
 			{
 				WC++;
+				WinPLayers.push(Turn);
 				//UpdatePlayerList(Turn);
 				// We have to find a way in which this player's turn does not come again.....?
 			}
