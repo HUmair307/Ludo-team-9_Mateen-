@@ -609,6 +609,32 @@ public:
 			}
 		}
 	}
+	
+	void updateBoard(int TokenIndex, int DiceNo)
+	{
+		if (Grid[TokenIndex]->isAtHome())
+		{
+			Grid[Grid[TokenIndex]->getInitialLocation()]=Grid[TokenIndex];
+			Grid[TokenIndex]->changeHomeStatus();
+			Grid[TokenIndex]= nullptr;
+		}
+		else
+		{
+			int Des = TokenIndex+DiceNo;
+			if (Des>75)
+			{
+				Des-=76;
+			}
+			if (Grid[Des]!=nullptr)
+			{
+				Grid[Grid[Des]->getHomeIndex()] = Grid[Des];
+				Grid[Des]->changeHomeStatus();
+				Grid[Des]=nullptr;
+			}
+			Grid[Des]=Grid[TokenIndex];
+			Grid[TokenIndex]=nullptr;
+		}
+	}
 	void Play()
 	{
 		init();
