@@ -63,5 +63,19 @@ public:
 		TokenLocationOnBoard = HomeCell;
 		Homestatus = true;
 	}
+	
+	int getInitialLocation()
+	{
+		return initialLocation;
+	}
+	
+	void changeHomeStatus()
+	{
+		if (Homestatus)
+			Homestatus = false;
+		else
+			Homestatus = true;
+	}
+	
 };
 
