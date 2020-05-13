@@ -627,6 +627,11 @@ public:
 			{
 				Des-=76;
 			}
+			Grid[TokenIndex]->addSteps(DiceNo);
+			if (Grid[TokenIndex]->StepsTaken() > Grid[TokenIndex]->JumpStep())
+			{
+				Des = Grid[TokenIndex]->JumpIndex()+(Grid[TokenIndex]->StepsTaken()-Grid[TokenIndex]->JumpStep());
+			}
 			if (Grid[Des]!=nullptr)
 			{
 				Grid[Grid[Des]->getHomeIndex()] = Grid[Des];
