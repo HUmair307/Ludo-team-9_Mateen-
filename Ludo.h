@@ -99,7 +99,7 @@ public:
 		// Where should we display the which player's turn is it right now?
 	}
 
-	void UpdatePlayerList(int Turn)
+	/*void UpdatePlayerList(int Turn)
 	{
 		Player** NewPlayer = new Player*[NoOfPlayers - WC]; // Provided WC has already been updated. Please take note
 		int z = 0;
@@ -112,7 +112,7 @@ public:
 		}
 		delete[]Players;
 		Players = NewPlayer;
-	}
+	}*/
 	
 	void DisplayResult()
 	{
@@ -642,6 +642,8 @@ public:
 			// Draw Token at Des;
 			Grid[TokenIndex]=nullptr;
 			// Draw Cell[TokenIndex]
+			if (Grid[Des]->StepsTaken()==55)
+			 	Players[Turn]->TokenReachDest++;
 		}
 	}
 	void Play()
@@ -681,7 +683,8 @@ public:
 			if (isWin())
 			{
 				WC++;
-				UpdatePlayerList(Turn);	
+				//UpdatePlayerList(Turn);
+				// We have to find a way in which this player's turn does not come again.....?
 			}
 			ChangeTurn();
 			if (WC == NoOfPlayers - 1)
