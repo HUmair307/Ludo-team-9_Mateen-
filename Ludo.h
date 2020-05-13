@@ -15,6 +15,7 @@ protected:
 	Player** Players;
 	//Player Players[MaxPlayers];
 	int NoOfPlayers, Turn, MaxNoSteps, WC;
+	colors turncolor;
 	int DU;
 	int NOC=0;// number of cells
 	Cell C[95];
@@ -48,6 +49,8 @@ protected:
 public:
 	Ludo(){}
 	
+
+
 	void InitBoard()
 	{
 			// We don't really need this?
@@ -72,25 +75,26 @@ public:
 		++Turn;
 		if (Turn == NoOfPlayers)
 			Turn = 0;
+		inttocolor();
 	}
 
 	void DisplayPlayerMsg()
 	{
 		if (Turn == 0)
 		{
-			outtextxy(750, 50, "blue's turn");
+			outtextxy(750, 50, "Green's turn");
 		}
 		else if (Turn == 1)
 		{
-			outtextxy(750, 50, "red's turn");
+			outtextxy(750, 50, "Gray's turn");
 		}
 		else if (Turn == 2)
 		{
-			outtextxy(750, 50, "green's turn");
+			outtextxy(750, 50, "Blue's turn");
 		}
 		else 
 		{
-			outtextxy(750, 50, "darkgray's turn");
+			outtextxy(750, 50, "Red's turn");
 		}
 		// Where should we display the which player's turn is it right now?
 	}
@@ -483,7 +487,32 @@ public:
 		else
 			return false;
 	}
-
+	void inttocolor()
+	{
+		/*
+				Players[3] = new Player(RED);
+		Players[0]= new Player(GREEN);
+		Players[1]= new Player(DARKGRAY);
+		Players[2]= new Player(BLUE);
+		*/
+		if (Turn == 0)
+		{
+			turncolor = GREEN;
+		}
+		else if(Turn==1)
+		{
+			turncolor = DARKGRAY;
+		}
+		else if (Turn == 2)
+		{
+			turncolor = BLUE;
+		}
+		else
+		{
+			turncolor = RED;
+		}
+		
+	}
 	void StartGame()
 	{
 		// Why do we need this function when we already have init..?
@@ -494,6 +523,10 @@ public:
 		Grid = new Token*[92];
 		for(int i=0;i<92;++i)
 			Grid[i]=nullptr;
+		NoOfPlayers = 4;
+		Turn = 0;
+		turncolor = GREEN;
+		MaxNoSteps = 55;
 		Players = new Player*[4];
 		Players[3] = new Player(RED);
 		Players[0]= new Player(GREEN);
@@ -535,15 +568,19 @@ public:
 	
 	bool isValidSelection(int CellIndex, int DiceNo)
 	{
-		if (Grid[CellIndex]->isAtHome())
+		if (Grid[CellIndex] != NULL && Grid[CellIndex]->getColor() == turncolor)
 		{
-			if (DiceNo == 6)
+			if (Grid[CellIndex]->isAtHome())
+			{
+				if (DiceNo == 6)
+					return true;
+				else
+					return false;
+			}
+			if (Grid[CellIndex]->StepsTaken() + DiceNo <= 55)
 				return true;
-			else
-				return false;
+			return false;
 		}
-		if (Grid[CellIndex]->StepsTaken() + DiceNo >= 55)
-			return true;
 		return false;
 	}
 	
@@ -558,8 +595,8 @@ public:
 			}
 			else if (Players[Turn]->PlayerTokens[i]->StepsTaken() + dice.DiceNoAtIndex(0) <= 55)
 				return true;
-			return false;
 		}
+		return false;
 	}
 	void DrawToken()
 	{
@@ -583,17 +620,30 @@ public:
 		{
 			DrawToken();
 			DisplayPlayerMsg();
-			//Players[Turn].rolladice();
-			//Players[Turn].ChoosingTokken();
-			//Players[Turn].PlayingSelectedToken(tokenSelected);
-			//UpdateBoard(tokenSelected);
-			//Players[Turn].DrawToken();
 			dice.rolladice();
 			int SelectBoxIndex;
+			/*if (!canContinue())
+			{
+				ChangeTurn();
+				dice.reset();
+				system("Pause");
+				continue;
+			}*/
+			int kuchb = 0;
 			do
 			{
-				SelectBoxIndex = choosingtoken();
-			}while(SelectBoxIndex==-1);
+				if(kuchb!=0&&isValidSelection(SelectBoxIndex, dice.diceno[kuchb])!=false)
+					kuchb++;
+
+
+				do
+				{
+					SelectBoxIndex = choosingtoken();
+				} while (SelectBoxIndex == -1);
+				if (isValidSelection(SelectBoxIndex, dice.diceno[kuchb]) == false)
+					outtextxy(750, 60, "oye sahi km kr bhai");
+
+			} while (isValidSelection(SelectBoxIndex, dice.diceno[kuchb]) == false && kuchb < 3 && dice.diceno[kuchb + 1] != 0);
 			if (isWin())
 			{
 				WC++;
