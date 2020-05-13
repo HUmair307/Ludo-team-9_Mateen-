@@ -15,7 +15,8 @@ public:
 	int TokenLocationOnBoard;
 	// int TokenReachDest;
 	bool Homestatus;
-
+	int JumpStep;
+	int JumpIndex;
 public:
 
 	Token()
@@ -47,6 +48,16 @@ public:
 		return color;
 	}
 	
+	int JumpIndex()
+	{
+		return JumpIndex;
+	}
+	
+	int JumpStep()
+	{
+		return JumpStep;
+	}
+	
 	bool isAtHome()
 	{
 		return Homestatus;
@@ -57,6 +68,10 @@ public:
 		return NoOfStepsTaken;
 	}
 	
+	void addSteps(int Steps)
+	{
+		NoOfStepsTaken+=Steps;
+	}
 	int getHomeIndex()
 	{
 		return HomeCell;
