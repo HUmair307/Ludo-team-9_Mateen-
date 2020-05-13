@@ -57,6 +57,11 @@ public:
 		return NoOfStepsTaken;
 	}
 	
+	int getHomeIndex()
+	{
+		return HomeCell;
+	}
+	
 	void Killed()
 	{
 		NoOfStepsTaken = 0;
