@@ -615,8 +615,10 @@ public:
 		if (Grid[TokenIndex]->isAtHome())
 		{
 			Grid[Grid[TokenIndex]->getInitialLocation()]=Grid[TokenIndex];
+			// Draw Token at Grid[TokenIndex]->getInitialLocation()
 			Grid[TokenIndex]->changeHomeStatus();
 			Grid[TokenIndex]= nullptr;
+			// Draw Cell[TokenIndex]
 		}
 		else
 		{
@@ -628,11 +630,14 @@ public:
 			if (Grid[Des]!=nullptr)
 			{
 				Grid[Grid[Des]->getHomeIndex()] = Grid[Des];
+				// Draw Token at Grid[Des]->getHomeIndex()
 				Grid[Des]->changeHomeStatus();
 				Grid[Des]=nullptr;
 			}
 			Grid[Des]=Grid[TokenIndex];
+			// Draw Token at Des;
 			Grid[TokenIndex]=nullptr;
+			// Draw Cell[TokenIndex]
 		}
 	}
 	void Play()
@@ -641,10 +646,9 @@ public:
 		//StartGame();
 		DisplayBoard();
 		DisplayDiceNo();
-		
+		DrawToken();
 		do
 		{
-			DrawToken();
 			DisplayPlayerMsg();
 			dice.rolladice();
 			int SelectBoxIndex;
