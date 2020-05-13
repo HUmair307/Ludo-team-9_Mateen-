@@ -24,7 +24,7 @@ public:
 
 	}
 	
-	Token(colors C, int HomeIndex, int IntialCell)
+	/*Token(colors C, int HomeIndex, int IntialCell)
 	{
 		color = C;
 		NoOfStepsTaken = 0;
@@ -32,6 +32,18 @@ public:
 		initialLocation = IntialCell;
 		TokenLocationOnBoard = HomeIndex;
 		Homestatus = true;
+	}*/
+	
+	Token(colors C, int HomeIndex, int IntialCell, int Jumpto)
+	{
+		color = C;
+		NoOfStepsTaken = 0;
+		HomeCell = HomeIndex;
+		initialLocation = IntialCell;
+		TokenLocationOnBoard = HomeIndex;
+		Homestatus = true;
+		JumpStep = 55;
+		JumpIndex = Jumpto;
 	}
 	
 	virtual void DrawToken(Position P)
