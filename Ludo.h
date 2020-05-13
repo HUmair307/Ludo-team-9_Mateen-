@@ -1,11 +1,12 @@
 #pragma once
-
+#include<vector>
 #include "Dice.h"
 #include "Grid.h"
 #include<string.h>
 #include"GreenToken.h"
 #include"RedToken.h"
 #include"YellowToken.h"
+#include<iostream>
 #include"BlueToken.h"
 using namespace std;
 class Ludo :public Player,public Cell
@@ -23,7 +24,7 @@ protected:
 	colors cc = WHITE;
 	Dice dice;
 	int HCN = 76;
-	vector<int>WinPlayers;
+	vector <int> WinPlayers;
 	/*
 	 YELLOW
 									          
@@ -78,9 +79,9 @@ public:
 			++Turn;
 			if (Turn == NoOfPlayers)
 				Turn = 0;
-			for(int i=0;i<WinPLayers.size();i++)
+			for(int i=0;i<WinPlayers.size();i++)
 			{
-				if (Turn==WinPLayers[i])
+				if (Turn==WinPlayers[i])
 					continue;
 			}
 			break;
@@ -334,8 +335,11 @@ public:
 				{
 					cc = DARKGRAY; 
 					C[SBN].setcellPos(Position(276 + x, 0 + y), Position(322 + x, 46 + y), cc);
-					SBN++;
+					fillpoly(5, a);
 
+					SBN++;
+					cc = BLACK;
+					continue;
 				}
 				if ((i == 2 && k == 1))
 				{
@@ -361,7 +365,7 @@ public:
 				cc = BLUE; C[NOC].Issave = true;
 			}
 			setfillstyle(SOLID_FILL, cc);
-			C[NOC].setcellPos(Position(276 + x, 414 ), Position(322 + x, 460), cc);
+			C[NOC].setcellPos(Position(414 + x, 276), Position(460 + x, 322), cc);
 			fillpoly(5, g);
 			setfillstyle(SOLID_FILL, BLACK);
 			cc = BLACK;
@@ -377,15 +381,18 @@ public:
 				if ((i == 1 && k != 0))
 				{
 					cc = BLUE; C[SBN].Issave = true;
-					C[SBN].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+					C[SBN].setcellPos(Position(414 + x, 276 + y), Position(460 + x, 322 + y), cc);
+					fillpoly(5, g);
+					cc = BLACK;
 					SBN++;
+					continue;
 				}
 				if ((i == 2 && k == 1))
 				{
 					cc = BLUE; C[NOC].Issave = true;
 				}
 				setfillstyle(SOLID_FILL, cc);
-				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+				C[NOC].setcellPos(Position(414 + x, 276 + y), Position(460 + x, 322 + y), cc);
 				fillpoly(5, g);
 				setfillstyle(SOLID_FILL, BLACK);
 				cc = BLACK;
@@ -407,10 +414,16 @@ public:
 				{
 					cc = RED; C[SBN].Issave = true;
 					C[SBN].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+					fillpoly(5, a);
+					cc = BLACK;
+
+
 					SBN--;
+					continue;
 				}
 				setfillstyle(SOLID_FILL, cc);
 				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+
 				fillpoly(5, a);
 				setfillstyle(SOLID_FILL, BLACK);
 				cc = BLACK;
@@ -435,12 +448,17 @@ public:
 				{
 					cc = GREEN; C[SBN].Issave = true;
 
-					C[SBN].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+					C[SBN].setcellPos(Position(0 + x, 276 + y), Position(46 + x, 322 + y), cc);
+					fillpoly(5, g);
 					SBN--;
+					cc = BLACK;
+					continue;
 				}
 				setfillstyle(SOLID_FILL, cc);
-				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+				C[NOC].setcellPos(Position(0 + x, 276 + y), Position(46 + x, 322 + y), cc);
 				fillpoly(5, g);
+
+
 				setfillstyle(SOLID_FILL, BLACK);
 				cc = BLACK;
 				NOC++;
@@ -543,12 +561,34 @@ public:
 		Players[1]= new Player(DARKGRAY);
 		Players[2]= new Player(BLUE);
 		
+		/*
+		
+											  5 6 7
+											  4   8  52
+											  3   9  53
+											  2   10 54
+											  1   11 55
+											  0   12 56
+							46 47 48 49	50 51 	    13 14 15 16 17 18
+							45 67 68 69 70 71       61 60 59 58 57 19                    
+							44 43 42 41 40 39       25 24 23 22 21 20
+											38 62 26
+											37 63 27	
+											36 64 28
+											35 65 29
+											34 66 30
+                                            33 32 31
+													
+		
+		*/
+
+
 			for (int i = 0; i < 4; i++)
 			{
-				Players[2]->PlayerTokens[i] = new BlueToken(BLUE, 84 + i, 21);
-				Players[3]->PlayerTokens[i] = new RedToken(RED, 88+i, 34);
-				Players[0]->PlayerTokens[i] = new GreenToken(GREEN, 76 + i, 47);
-				Players[1]->PlayerTokens[i] = new YellowToken(DARKGRAY, 80 + i, 8);
+				Players[2]->PlayerTokens[i] = new BlueToken(BLUE, 84 + i, 21,57);
+				Players[3]->PlayerTokens[i] = new RedToken(RED, 88+i, 34,62);
+				Players[0]->PlayerTokens[i] = new GreenToken(GREEN, 76 + i, 47,67);
+				Players[1]->PlayerTokens[i] = new YellowToken(DARKGRAY, 80 + i, 8,52);
 			}
 			int m = 0;
 			for (int  i = 0; i < 4; i++)
@@ -626,6 +666,10 @@ public:
 		{
 			Grid[Grid[TokenIndex]->getInitialLocation()]=Grid[TokenIndex];
 			// Draw Token at Grid[TokenIndex]->getInitialLocation()
+			Grid[Grid[TokenIndex]->getInitialLocation()];
+			Position P=C[Grid[TokenIndex]->getInitialLocation()].getcellcenter(C[Grid[TokenIndex]->getInitialLocation()].getTL(),
+				C[Grid[TokenIndex]->getInitialLocation()].getBR());
+			Grid[TokenIndex]->DrawToken(P);
 			Grid[TokenIndex]->changeHomeStatus();
 			Grid[TokenIndex]= nullptr;
 			// Draw Cell[TokenIndex]
@@ -638,62 +682,87 @@ public:
 				Des-=76;
 			}
 			Grid[TokenIndex]->addSteps(DiceNo);
-			if (Grid[TokenIndex]->StepsTaken() > Grid[TokenIndex]->JumpStep())
+			if (Grid[TokenIndex]->StepsTaken() > Grid[TokenIndex]->getJumpStep())
 			{
-				Des = Grid[TokenIndex]->JumpIndex()+(Grid[TokenIndex]->StepsTaken()-Grid[TokenIndex]->JumpStep()-1);
+				Des = Grid[TokenIndex]->JumpIndex+(Grid[TokenIndex]->StepsTaken()-Grid[TokenIndex]->getJumpStep()-1);
 			}
 			else if (Grid[Des]!=nullptr)
 			{
 				Grid[Grid[Des]->getHomeIndex()] = Grid[Des];
 				// Draw Token at Grid[Des]->getHomeIndex()
+				Position P = C[Grid[Des]->getHomeIndex()].getcellcenter(C[Grid[Des]->getHomeIndex()].getTL(),
+					C[Grid[Des]->getHomeIndex()].getBR());
+				Grid[Des]->DrawToken(P);
 				Grid[Des]->changeHomeStatus();
 			}
 			Grid[Des]=Grid[TokenIndex];
 			// Draw Token at Des;
+			Position P = C[Des].getcellcenter(C[Des].getTL(),C[Des].getBR());
+			Grid[Des]->DrawToken(P);
 			Grid[TokenIndex]=nullptr;
 			// Draw Cell[TokenIndex]
 			if (Grid[Des]->StepsTaken()==55)
 			 	Players[Turn]->TokenReachDest++;
 		}
 	}
+	void Displayindexofcell()
+	{
+		Position P;
+		for (int i = 0; i < 92; i++)
+		{
+			P=C[i].getcellcenter(C[i].getTL(), C[i].getBR());
+			stringstream strs;
+			strs << i;
+			string temp_str = strs.str();
+			char* char_type = (char*)temp_str.c_str();
+			outtextxy(P.x, P.y, char_type);
+		}
+	}
+
 	void Play()
 	{
 		init();
 		//StartGame();
 		DisplayBoard();
-		DisplayDiceNo();
 		DrawToken();
+
+
+		Displayindexofcell();
+
+
+
 		do
 		{
 			DisplayPlayerMsg();
-			dice.rolladice();
+			DisplayDiceNo();
 			int SelectBoxIndex;
-			/*if (!canContinue())
+			if (!canContinue())
 			{
 				ChangeTurn();
 				dice.reset();
-				system("Pause");
 				continue;
-			}*/
+			}
 			int kuchb = 0;
-			do
+			do 
 			{
-				if(kuchb!=0&&isValidSelection(SelectBoxIndex, dice.diceno[kuchb])!=false)
-					kuchb++;
-
-
 				do
 				{
-					SelectBoxIndex = choosingtoken();
-				} while (SelectBoxIndex == -1);
-				if (isValidSelection(SelectBoxIndex, dice.diceno[kuchb]) == false)
-					outtextxy(750, 60, "oye sahi km kr bhai");
+					do
+					{
+						SelectBoxIndex = choosingtoken();
+					} while (SelectBoxIndex == -1);
+					if (isValidSelection(SelectBoxIndex, dice.diceno[kuchb]) == false)
+						outtextxy(750, 65, "oye sahi km kr bhai");
 
-			} while (isValidSelection(SelectBoxIndex, dice.diceno[kuchb]) == false && kuchb < 3 && dice.diceno[kuchb + 1] != 0);
+				} while (isValidSelection(SelectBoxIndex, dice.diceno[kuchb]) == false);
+				kuchb++;
+				updateBoard(SelectBoxIndex, dice.diceno[kuchb]);
+			} while (dice.diceno[kuchb]==6);
+			outtextxy(750, 65, "                       ");
 			if (isWin())
 			{
 				WC++;
-				WinPLayers.push(Turn);
+				WinPlayers.push_back(Turn);
 				//UpdatePlayerList(Turn);
 				// We have to find a way in which this player's turn does not come again.....?
 			}
@@ -703,6 +772,7 @@ public:
 				DisplayResult();
 				break;
 			}
+
 		}while(true);
 
 	}

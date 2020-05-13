@@ -13,7 +13,6 @@ public:
 	int HomeCell;
 	int NoOfStepsTaken;
 	int TokenLocationOnBoard;
-	// int TokenReachDest;
 	bool Homestatus;
 	int JumpStep;
 	int JumpIndex;
@@ -24,16 +23,6 @@ public:
 
 	}
 	
-	/*Token(colors C, int HomeIndex, int IntialCell)
-	{
-		color = C;
-		NoOfStepsTaken = 0;
-		HomeCell = HomeIndex;
-		initialLocation = IntialCell;
-		TokenLocationOnBoard = HomeIndex;
-		Homestatus = true;
-	}*/
-	
 	Token(colors C, int HomeIndex, int IntialCell, int Jumpto)
 	{
 		color = C;
@@ -42,7 +31,7 @@ public:
 		initialLocation = IntialCell;
 		TokenLocationOnBoard = HomeIndex;
 		Homestatus = true;
-		JumpStep = 55;
+		JumpStep = 50;
 		JumpIndex = Jumpto;
 	}
 	
@@ -60,7 +49,7 @@ public:
 		return color;
 	}
 	
-	int JumpIndex()
+	int getJumpIndex()
 	{
 		return JumpIndex;
 	}
