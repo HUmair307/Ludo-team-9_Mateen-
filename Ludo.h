@@ -630,14 +630,13 @@ public:
 			Grid[TokenIndex]->addSteps(DiceNo);
 			if (Grid[TokenIndex]->StepsTaken() > Grid[TokenIndex]->JumpStep())
 			{
-				Des = Grid[TokenIndex]->JumpIndex()+(Grid[TokenIndex]->StepsTaken()-Grid[TokenIndex]->JumpStep());
+				Des = Grid[TokenIndex]->JumpIndex()+(Grid[TokenIndex]->StepsTaken()-Grid[TokenIndex]->JumpStep()-1);
 			}
-			if (Grid[Des]!=nullptr)
+			else if (Grid[Des]!=nullptr)
 			{
 				Grid[Grid[Des]->getHomeIndex()] = Grid[Des];
 				// Draw Token at Grid[Des]->getHomeIndex()
 				Grid[Des]->changeHomeStatus();
-				Grid[Des]=nullptr;
 			}
 			Grid[Des]=Grid[TokenIndex];
 			// Draw Token at Des;
