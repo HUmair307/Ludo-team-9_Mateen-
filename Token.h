@@ -65,7 +65,7 @@ public:
 		return JumpIndex;
 	}
 	
-	int JumpStep()
+	int getJumpStep()
 	{
 		return JumpStep;
 	}

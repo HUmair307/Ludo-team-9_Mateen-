@@ -6,7 +6,7 @@ class RedToken :public Token
 {
 
 public:
-	RedToken(colors C, int HomeIndex, int IntialCell) :Token(C, HomeIndex, IntialCell) {}
+	RedToken(colors C, int HomeIndex, int IntialCell, int Jumpto) :Token(C, HomeIndex, IntialCell, Jumpto) {}
 
 	virtual void DrawToken(Position p)
 	{

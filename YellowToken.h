@@ -6,7 +6,7 @@ class YellowToken :public Token
 {
 
 public:
-	YellowToken(colors C, int HomeIndex, int IntialCell) :Token(C, HomeIndex, IntialCell) {}
+	YellowToken(colors C, int HomeIndex, int IntialCell, int Jumpto) :Token(C, HomeIndex, IntialCell, Jumpto) {}
 	virtual void DrawToken(Position p)
 	{
 		setfillstyle(SOLID_FILL, DARKGRAY);

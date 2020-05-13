@@ -6,7 +6,7 @@ class GreenToken:public Token
 {
 
 public:
-	GreenToken(colors C, int HomeIndex, int IntialCell):Token(C,HomeIndex,IntialCell){}
+	GreenToken(colors C, int HomeIndex, int IntialCell, int Jumpto):Token(C,HomeIndex,IntialCell, Jumpto){}
 	virtual void DrawToken(Position p)
 	{
 		setfillstyle(SOLID_FILL, GREEN);
