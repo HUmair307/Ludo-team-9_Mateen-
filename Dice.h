@@ -15,8 +15,8 @@ public:
 	}
 	int randomgen()
 	{
-		srand(time(0));
-		int dice = (int)(1 + rand() % 6);
+		//srand(time(0));
+		int dice = (int)(1 + (rand() % 6));
 		return dice;
 
 	}

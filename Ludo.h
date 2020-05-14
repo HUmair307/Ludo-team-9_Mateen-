@@ -676,6 +676,13 @@ public:
 	
 	bool canContinue()
 	{
+		int Sum = 0;
+		for (int i = 0; i < 3; ++i)
+		{
+			Sum += dice.diceno[i];
+		}
+		if (Sum == 18)
+			return false;
 		for(int i=0;i<4;++i)
 		{
 			if (Players[Turn]->PlayerTokens[i]->isAtHome())
