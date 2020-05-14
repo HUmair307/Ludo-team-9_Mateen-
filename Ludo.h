@@ -667,7 +667,7 @@ public:
 				else
 					return false;
 			}
-			if (Grid[CellIndex]->StepsTaken() + DiceNo <= 55)
+			if (Grid[CellIndex]->StepsTaken() + DiceNo <= 56)
 				return true;
 			return false;
 		}
@@ -683,7 +683,7 @@ public:
 				if (dice.DiceNoAtIndex(0)==6)
 					return true;
 			}
-			else if (Players[Turn]->PlayerTokens[i]->StepsTaken() + dice.DiceNoAtIndex(0) <= 55)
+			else if (Players[Turn]->PlayerTokens[i]->StepsTaken() + dice.DiceNoAtIndex(0) <= 56)
 				return true;
 		}
 		return false;
@@ -717,9 +717,12 @@ public:
 		else
 		{
 			int Des = TokenIndex+DiceNo;
-			if (Des>75)
+			if (TokenIndex<51)
 			{
-				Des-=76;
+				if (Des>51)
+				{
+					Des-=52;
+				}
 			}
 			Grid[TokenIndex]->addSteps(DiceNo);
 			if (Grid[TokenIndex]->StepsTaken() > Grid[TokenIndex]->getJumpStep())
@@ -735,14 +738,22 @@ public:
 				Grid[Des]->DrawToken(P);
 				Grid[Des]->changeHomeStatus();
 			}
+			if (Grid[TokenIndex]->StepsTaken()==56)
+			{
+				Players[Turn]->TokenReachDest++;
+				for(int i=0;i<4;i++)
+				{
+					if (i==Turn)
+						Des=72+i;
+				}
+			}
 			Grid[Des]=Grid[TokenIndex];
 			// Draw Token at Des;
 			Position P = C[Des].getcellcenter(C[Des].getTL(),C[Des].getBR());
 			Grid[Des]->DrawToken(P);
 			Grid[TokenIndex]=nullptr;
 			// Draw Cell[TokenIndex]
-			if (Grid[Des]->StepsTaken()==55)
-			 	Players[Turn]->TokenReachDest++;
+			
 		}
 	}
 	void Displayindexofcell()
