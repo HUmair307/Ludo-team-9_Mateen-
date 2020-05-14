@@ -698,14 +698,22 @@ public:
 				Grid[Des]->DrawToken(P);
 				Grid[Des]->changeHomeStatus();
 			}
+			if (Grid[TokenIndex]->StepsTaken()==56)
+			{
+				Players[Turn]->TokenReachDest++;
+				for(int i=0;i<4;i++)
+				{
+					if (i==Turn)
+						Des=72+i;
+				}
+			}
 			Grid[Des]=Grid[TokenIndex];
 			// Draw Token at Des;
 			Position P = C[Des].getcellcenter(C[Des].getTL(),C[Des].getBR());
 			Grid[Des]->DrawToken(P);
 			Grid[TokenIndex]=nullptr;
 			// Draw Cell[TokenIndex]
-			if (Grid[Des]->StepsTaken()==56)
-			 	Players[Turn]->TokenReachDest++;
+			
 		}
 	}
 	void Displayindexofcell()
