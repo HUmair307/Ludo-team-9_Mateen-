@@ -264,17 +264,24 @@ public:
 
 
 		int T1[8] = {276,276,414,276,345,345,276,276 };
+		C[73].setcellPos(Position(345*2, 282*2), Position(0, 0), DARKGRAY);
+
 		setfillstyle(SOLID_FILL, DARKGRAY);
 		fillpoly(4, T1);
-
 		int T2[8] = { 414,276,414,414,345,345,414,276 };
+		C[74].setcellPos(Position(395*2, 345*2), Position(0, 0), BLUE);
+
 		setfillstyle(SOLID_FILL, BLUE);
 		fillpoly(4, T2);
 		int T3[8] = { 345,345,414,414,276,414,345,345 };
+		C[75].setcellPos(Position(345*2, 395*2), Position(0, 0), RED);
+
 		setfillstyle(SOLID_FILL, RED);
 		fillpoly(4, T3);
 		int T4[8] = { 276,276,345,345,276,414,276,276 };
+		C[72].setcellPos(Position(282*2, 345*2), Position(0, 0), GREEN);
 		setfillstyle(SOLID_FILL, GREEN);
+
 		fillpoly(4, T4);
 
 
@@ -294,9 +301,9 @@ public:
 											  2   10 54
 											  1   11 55
 											  0   12 56
-							46 47 48 49	50 51 	    13 14 15 16 17 18
-							45 67 68 69 70 71       61 60 59 58 57 19                    
-							44 43 42 41 40 39       25 24 23 22 21 20
+							46 47 48 49	50 51 	73  13 14 15 16 17 18
+							45 67 68 69 70 71 72 74 61 60 59 58 57 19                    
+							44 43 42 41 40 39  75   25 24 23 22 21 20
 											38 62 26
 											37 63 27	
 											36 64 28
@@ -335,6 +342,8 @@ public:
 				{
 					cc = DARKGRAY; 
 					C[SBN].setcellPos(Position(276 + x, 0 + y), Position(322 + x, 46 + y), cc);
+					setfillstyle(SOLID_FILL, cc);
+
 					fillpoly(5, a);
 
 					SBN++;
@@ -382,6 +391,8 @@ public:
 				{
 					cc = BLUE; C[SBN].Issave = true;
 					C[SBN].setcellPos(Position(414 + x, 276 + y), Position(460 + x, 322 + y), cc);
+					setfillstyle(SOLID_FILL, cc);
+
 					fillpoly(5, g);
 					cc = BLACK;
 					SBN++;
@@ -401,12 +412,12 @@ public:
 		}
 		////RED
 		SBN = 66;
-		for (int x = 92, i = 0; x >= 0; x -= 46, i++)
+		for (int x = 92, i = 0; x > 0; x -= 46, i++)
 		{
 			for (int y = 0, k = 0; y < 276; y += 46, k++)
 			{
 				int a[10] = { 276 + x,414 + y,322 + x,414 + y,322 + x,460 + y,276 + x,460 + y,276 + x,414 + y };
-				if ((i == 0 && k == 3)  || (i == 2 && k == 4))
+				if ((i == 0 && k == 3))
 				{
 					cc = RED; C[NOC].Issave = true;
 				}
@@ -414,33 +425,48 @@ public:
 				{
 					cc = RED; C[SBN].Issave = true;
 					C[SBN].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
+					setfillstyle(SOLID_FILL, cc);
 					fillpoly(5, a);
 					cc = BLACK;
-
-
 					SBN--;
 					continue;
 				}
 				setfillstyle(SOLID_FILL, cc);
 				C[NOC].setcellPos(Position(276 + x, 414 + y), Position(322 + x, 460 + y), cc);
-
 				fillpoly(5, a);
 				setfillstyle(SOLID_FILL, BLACK);
 				cc = BLACK;
 				NOC++;
 			}
 		}
+		NOC = 38;
+		for (int y = 0, k = 0; y < 276; y += 46, k++)
+		{
+			int t[10] = { 276 ,414 + y,322 ,414 + y,322 ,460 + y,276 ,460 + y,276 ,414 + y };
+			if (k == 4)
+			{
+				C[NOC].Issave = true; cc = RED;
+			}
+			setfillstyle(SOLID_FILL, cc);
+			C[NOC].setcellPos(Position(276 , 414+y), Position(322 , 460+y), cc);
+			fillpoly(5, t);
+			setfillstyle(SOLID_FILL, BLACK);
+			cc = BLACK;
+			NOC--;
+		}
+
 
 		////
 		////// GREEN
 		////
+		NOC = 39;
 		SBN = 71;
-		for (int y = 92, i = 0; y >=0; y -= 46, i++)
+		for (int y = 92, i = 0; y >=46; y -= 46, i++)
 		{
 			for (int x = 230, k = 0; x >= 0; x -= 46, k++)
 			{
 				int g[10] = { 0 + x,276 + y,46 + x,276 + y,46 + x,322 + y,0 + x,322 + y,0 + x,276 + y };
-				if ((i == 0 && k == 3)  || (i == 2 && k == 4))
+				if ((i == 0 && k == 3))
 				{
 					cc = GREEN; C[NOC].Issave = true;
 				}
@@ -449,6 +475,8 @@ public:
 					cc = GREEN; C[SBN].Issave = true;
 
 					C[SBN].setcellPos(Position(0 + x, 276 + y), Position(46 + x, 322 + y), cc);
+					setfillstyle(SOLID_FILL, cc);
+
 					fillpoly(5, g);
 					SBN--;
 					cc = BLACK;
@@ -465,7 +493,19 @@ public:
 			}
 		}
 
-
+		for (int x = 0, k = 0; x <= 230; x+=46,k++)
+		{
+			if (k == 1)
+			{
+				cc = GREEN; C[NOC].Issave = true;
+			}
+			int g[10] = { 0 + x,276 ,46 + x,276 ,46 + x,322 ,0 + x,322 ,0 + x,276 };
+			C[NOC].setcellPos(Position(0 + x, 276), Position(46 + x, 322),cc);
+			setfillstyle(SOLID_FILL, cc);
+			fillpoly(5, g);
+			cc = BLACK;
+			NOC++;
+		}
 
 		// arraay ka index for dice cell is 92,93,94;
 		int K = 92;
