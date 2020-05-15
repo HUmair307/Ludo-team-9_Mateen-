@@ -13,6 +13,21 @@ public:
 		for (auto a : diceno)
 			*diceno = 0;
 	}
+	bool isempty()
+	{
+		int sum = 0;
+		for (int i = 0; i < 3; i++)
+		{
+			sum = diceno[i] + sum;
+			
+		}
+		if (sum == 0)
+		{
+			return true;
+		}
+		return false;
+	}
+
 	int randomgen()
 	{
 		//srand(time(0));

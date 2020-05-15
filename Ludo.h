@@ -142,16 +142,16 @@ public:
 		fillpoly(5, a);
 		int a1[10] = { 0+30,0+30,276-30,0+30,276-30,276-30,0+30,276-30,0+30,0+30 };
 		int h[10] = { 37,37,83,37,83,83,37,83,37,37 };// points of home cell of green 
-		C[HCN].setcellPos(Position(37, 37), Position(83, 83), GREEN); HCN++;
+		C[HCN].setcellPos(Position(37, 37), Position(83, 83), LIGHTGREEN); HCN++;
 		drawpoly(5, h);
 		int j[10] = { 193,37,239,37,239,83,193,83,193,37 };// points of home cell of green 
-		C[HCN].setcellPos(Position(193,37), Position(239,83), GREEN); HCN++;
+		C[HCN].setcellPos(Position(193,37), Position(239,83), LIGHTGREEN); HCN++;
 		drawpoly(5, j);
 		int k[10] = { 37,193,83,193,83,239,37,239,37,193};// points of home cell of green 
-		C[HCN].setcellPos(Position(37, 193), Position(83, 239), GREEN); HCN++;
+		C[HCN].setcellPos(Position(37, 193), Position(83, 239), LIGHTGREEN); HCN++;
 		drawpoly(5, k);
 		int l[10] = { 193,193,239,193,239,239,193,239,193,193};// points of home cell of green 
-		C[HCN].setcellPos(Position(193, 193), Position(239, 239), GREEN); HCN++;
+		C[HCN].setcellPos(Position(193, 193), Position(239, 239), LIGHTGREEN); HCN++;
 		drawpoly(5, l);
 		setfillstyle(SOLID_FILL, LIGHTGREEN);
 		fillpoly(5, a1);
@@ -169,16 +169,16 @@ public:
 
 
 		int m[10] = { 451,37,497,37,497,83,451,83,451,37 };// points of home cell of green 
-		C[HCN].setcellPos(Position(451, 37), Position(497, 83), DARKGRAY); HCN++;
+		C[HCN].setcellPos(Position(451, 37), Position(497, 83), LIGHTGRAY); HCN++;
 		drawpoly(5, m);
 		int n[10] = { 607,37,653,37,653,83,607,83,607,37 };// points of home cell of green 
-		C[HCN].setcellPos(Position(607, 37), Position(653, 83), DARKGRAY); HCN++;
+		C[HCN].setcellPos(Position(607, 37), Position(653, 83), LIGHTGRAY); HCN++;
 		drawpoly(5, n);
 		int o[10] = { 451,193,497,193,497,239,451,239,451,193 };// points of home cell of green 
-		C[HCN].setcellPos(Position(451, 193), Position(497, 239), DARKGRAY); HCN++;
+		C[HCN].setcellPos(Position(451, 193), Position(497, 239), LIGHTGRAY); HCN++;
 		drawpoly(5, o);
 		int p[10] = { 607,193,653,193,653,239,607,239,607,193 };// points of home cell of green 
-		C[HCN].setcellPos(Position(607, 193), Position(653, 239), DARKGRAY); HCN++;
+		C[HCN].setcellPos(Position(607, 193), Position(653, 239), LIGHTGRAY); HCN++;
 		drawpoly(5, p);
 		
 		int b1[10] = { 414 + 30,0 + 30,690 - 30,0 + 30,690 - 30,276 - 30,414 + 30,276 - 30,414 + 30,0 + 30 };
@@ -206,16 +206,16 @@ public:
 
 		
 		int A[10] = { 451,451,497,451,497,497,451,497,451,451 };// points of home cell of green 
-		C[HCN].setcellPos(Position(451, 451), Position(497, 497), BLUE); HCN++;
+		C[HCN].setcellPos(Position(451, 451), Position(497, 497), LIGHTBLUE); HCN++;
 		drawpoly(5, A);
 		int B[10] = { 607,451,653,451,653,497,607,497,607,451 };// points of home cell of green 
-		C[HCN].setcellPos(Position(607, 451), Position(653, 497), BLUE); HCN++;
+		C[HCN].setcellPos(Position(607, 451), Position(653, 497), LIGHTBLUE); HCN++;
 		drawpoly(5, B);
 		int y[10] = { 451,607,497,607,497,653,451,653,451,607 };// points of home cell of green 
-		C[HCN].setcellPos(Position(497, 653), Position(451, 607), BLUE); HCN++;
+		C[HCN].setcellPos(Position(497, 653), Position(451, 607), LIGHTBLUE); HCN++;
 		drawpoly(5, y);
 		int z[10] = { 607,607,653,607,653,653,607,653,607,607 };// points of home cell of green 
-		C[HCN].setcellPos(Position(607, 607), Position(653, 653), BLUE); HCN++;
+		C[HCN].setcellPos(Position(607, 607), Position(653, 653), LIGHTBLUE); HCN++;
 		drawpoly(5, z);
 		
 		int d1[10] = { 414 + 30,414 + 30,690 - 30,414 + 30,690 - 30,690 - 30,414 + 30,690 - 30,414 + 30,414 + 30 };
@@ -235,17 +235,17 @@ public:
 		fillpoly(5, c);
 
 		int r[10] = { 37,451,83,451,83,497,37,497,37,451 };// points of home cell of green 
-		C[HCN].setcellPos(Position(37, 450), Position(83, 496), RED); HCN++;
+		C[HCN].setcellPos(Position(37, 450), Position(83, 496), LIGHTRED); HCN++;
 		drawpoly(5, r);
 		int X[10] = { 193,451,239,451,239,497,193,497,193,451 };// points of home cell of green 
-		C[HCN].setcellPos(Position(193, 450), Position(239, 496), RED); HCN++;
+		C[HCN].setcellPos(Position(193, 450), Position(239, 496),LIGHTRED); HCN++;
 		drawpoly(5, X);
 		int Y[10] = { 37,606,83,606,83,652,37,652,37,606 };// points of home cell of green 
 		drawpoly(5, Y);
-		C[HCN].setcellPos(Position(37, 606), Position(83, 652), RED); HCN++;
+		C[HCN].setcellPos(Position(37, 606), Position(83, 652), LIGHTRED); HCN++;
 		int Z[10] = { 193,606,239,606,239,652,193,652,193,606 };// points of home cell of green 
 		drawpoly(5, Z);
-		C[HCN].setcellPos(Position(193, 606), Position(239, 652), RED); HCN++;
+		C[HCN].setcellPos(Position(193, 606), Position(239, 652), LIGHTRED); HCN++;
 
 		
 		int c1[10] = { 0+30,414+30,276-30,414+30,276-30,690-30,0+30,690-30,0+30,414+30 };
@@ -523,7 +523,7 @@ public:
 
 		
 	}
-	int DiceNumberinBox()
+	int DiceIndex()
 	{
 		Position P;
 		while(1)
@@ -534,7 +534,9 @@ public:
 				if (C[92 + i].BoxConfirmation(P.x, P.y))
 				{
 					if (dice.diceno[i] != 0)
+					{
 						return i;
+					}
 					else
 						break;
 				}
@@ -547,7 +549,6 @@ public:
 	void DisplayDiceNo()
 	{
 		int diceindex = 92;
-		dice.rolladice();
 		
 		for (int d = 0; d < 3; d++)
 		{
@@ -636,11 +637,8 @@ public:
 											35 65 29
 											34 66 30
                                             33 32 31
-													
 		
 		*/
-
-
 			for (int i = 0; i < 4; i++)
 			{
 				Players[2]->PlayerTokens[i] = new BlueToken(BLUE, 84 + i, 21,57);
@@ -731,13 +729,15 @@ public:
 		{
 			Grid[Grid[TokenIndex]->getInitialLocation()]=Grid[TokenIndex];
 			// Draw Token at Grid[TokenIndex]->getInitialLocation()
+			//C[TokenIndex].draw();
 			Grid[Grid[TokenIndex]->getInitialLocation()];
 			Position P=C[Grid[TokenIndex]->getInitialLocation()].getcellcenter(C[Grid[TokenIndex]->getInitialLocation()].getTL(),
 				C[Grid[TokenIndex]->getInitialLocation()].getBR());
 			Grid[TokenIndex]->DrawToken(P);
 			Grid[TokenIndex]->changeHomeStatus();
 			Grid[TokenIndex]= nullptr;
-			// Draw Cell[TokenIndex]
+			C[TokenIndex].draw();
+
 		}
 		else
 		{
@@ -778,10 +778,10 @@ public:
 			Grid[Des]->DrawToken(P);
 			Grid[TokenIndex]=nullptr;
 			// Draw Cell[TokenIndex]
-			
+			C[TokenIndex].draw();
 		}
 	}
-	void Displayindexofcell()
+	/*void Displayindexofcell()
 	{
 		Position P;
 		for (int i = 0; i < 92; i++)
@@ -793,7 +793,7 @@ public:
 			char* char_type = (char*)temp_str.c_str();
 			outtextxy(P.x, P.y, char_type);
 		}
-	}
+	}*/
 
 
 
@@ -806,13 +806,14 @@ public:
 		DrawToken();
 
 
-		Displayindexofcell();
+		//Displayindexofcell();
 
-
+		int bxi;
 
 		do
 		{
 			DisplayPlayerMsg();
+			dice.rolladice();
 			DisplayDiceNo();
 			int SelectBoxIndex;
 			if (!canContinue())
@@ -824,19 +825,24 @@ public:
 			int kuchb = 0;
 			do 
 			{
+				DisplayDiceNo();
+
 				do
 				{
+					bxi = DiceIndex();
 					do
 					{
+
 						SelectBoxIndex = choosingtoken();
 					} while (SelectBoxIndex == -1);
-					if (isValidSelection(SelectBoxIndex, dice.diceno[kuchb]) == false)
+					if (isValidSelection(SelectBoxIndex, dice.diceno[bxi]) == false)
 						outtextxy(750, 65, "oye sahi km kr bhai");
 
-				} while (isValidSelection(SelectBoxIndex, dice.diceno[kuchb]) == false);
+				} while (isValidSelection(SelectBoxIndex, dice.diceno[bxi]) == false);
 				kuchb++;
-				updateBoard(SelectBoxIndex, dice.diceno[kuchb]);
-			} while (dice.diceno[kuchb]==6);
+				updateBoard(SelectBoxIndex, dice.diceno[bxi]);
+				dice.diceno[bxi] = 0;
+			} while (!dice.isempty());
 			outtextxy(750, 65, "                       ");
 			if (isWin())
 			{

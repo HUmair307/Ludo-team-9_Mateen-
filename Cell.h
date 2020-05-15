@@ -25,6 +25,15 @@ public:
 		TopLeft = T, ButtomRight = B, Cl = c;
 	}
 
+	void draw()
+	{
+		Position p=this->getTL();
+
+		int d[10] = { p.x,p.y,p.x + 46,p.y,p.x + 46 , p.y + 46,p.x,p.y + 46,p.x,p.y };
+		setfillstyle(SOLID_FILL, Cl);
+		fillpoly(5, d);
+	}
+
 	~Cell() {}
 };
 
