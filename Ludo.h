@@ -523,6 +523,24 @@ public:
 
 		
 	}
+	int DiceNumberinBox()
+	{
+		Position P;
+		while(1)
+		{
+			mouseclick(P);
+			for (int i = 0; i < 3; i++)
+			{
+				if (C[92 + i].BoxConfirmation(P.x, P.y))
+				{
+					if (dice.diceno[i] != 0)
+						return i;
+					else
+						break;
+				}
+			}
+		} 
+	}
 
 	
 
@@ -776,6 +794,9 @@ public:
 			outtextxy(P.x, P.y, char_type);
 		}
 	}
+
+
+
 
 	void Play()
 	{
