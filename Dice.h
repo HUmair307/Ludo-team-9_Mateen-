@@ -1,13 +1,12 @@
 #pragma once
-#include <time.h>
 #include "Cell.h"
+#include<time.h>
 using namespace std;
 class Dice
 {
 public:
 	
 	int diceno[3] = { 0 };
-
 	void reset()
 	{
 		for (auto a : diceno)
@@ -27,13 +26,12 @@ public:
 		}
 		return false;
 	}
+	
 
 	int randomgen()
 	{
-		//srand(time(0));
-		int dice = (int)(1 + (rand() % 6));
+		int dice = 1 + rand() % 6;
 		return dice;
-
 	}
 	void rolladice()
 	{

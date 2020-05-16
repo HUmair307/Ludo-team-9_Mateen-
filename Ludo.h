@@ -679,7 +679,7 @@ public:
 	int tokenChoseninBox(int CellIndex)
 	{
 			int i;
-			for (i = 0; i < box[CellIndex].dabba.size; ++i)
+			for (i = 0; i < box[CellIndex].dabba.size(); ++i)
 			{
 				if (box[CellIndex].dabba[i]->getColor() == turncolor)
 					return i;
@@ -808,13 +808,11 @@ public:
 		else
 		{
 			int Des = TokenIndex+DiceNo;
-			if (TokenIndex<51)
-			{
+			
 				if (Des>51)
 				{
 					Des-=52;
 				}
-			}
 			box[TokenIndex].dabba[TokkenIndexinDabba]->addSteps(DiceNo);
 			
 			if (box[TokenIndex].dabba[TokkenIndexinDabba]->StepsTaken() > box[TokenIndex].dabba[TokkenIndexinDabba]->getJumpStep())
@@ -825,7 +823,7 @@ public:
 
 			if (box[Des].dabba.size()>0)//box[Des].dabba[TokkenIndexinDabba]
 			{
-				if(isSpecialBox(Des) || Grid[des]->dabba[0]->getcolor() == turnColor)
+				if(isSpecialBox(Des) || box[Des].dabba[0]->getColor() == turncolor)
 				{
 					//box[des].dabba.push_back(box[TokenIndex].dabba[TokkenIndexinDabba]);
 				}
@@ -854,15 +852,42 @@ public:
 						Des=72+i;
 				}
 			}
-			box[des].dabba.push_back(box[TokenIndex].dabba[TokkenIndexinDabba]);
+			box[Des].dabba.push_back(box[TokenIndex].dabba[TokkenIndexinDabba]);
 			// Draw Token at Des;
 			Position P = C[Des].getcellcenter(C[Des].getTL(),C[Des].getBR());
 			box[Des].dabba[0]->DrawToken(P);
 			box[TokenIndex].dabba.erase(box[TokenIndex].dabba.begin()+TokkenIndexinDabba);
 			// Draw Cell[TokenIndex]
-			C[TokenIndex].draw();
+			if(box[TokenIndex].dabba.size()==0)
+				C[TokenIndex].draw();
+			else
+			{
+				Position P = C[TokenIndex].getcellcenter(C[TokenIndex].getTL(), C[TokenIndex].getBR());
+				box[TokenIndex].dabba[0]->DrawToken(P);
+			}
 		}
 	}
+
+
+	void PrintTokenAtS_PTurn()
+	{
+		//int SpecialBoxes[8] = { 34,42,47,3,8,16,21,29 };
+		for (int i = 0; i < 8; i++)
+		{
+			if (box[SpecialBoxes[i]].dabba.size() > 1)
+			{
+				for (int j = 0; j < box[SpecialBoxes[i]].dabba.size(); j++)
+				{
+					if (box[SpecialBoxes[i]].dabba[j]->getColor() == turncolor)
+					{
+						Position P = C[SpecialBoxes[i]].getcellcenter(C[SpecialBoxes[i]].getTL(), C[SpecialBoxes[i]].getBR());
+						box[SpecialBoxes[i]].dabba[j]->DrawToken(P);
+					}
+				}
+			}
+		}
+	}
+
 	/*void Displayindexofcell()
 	{
 		Position P;
@@ -884,6 +909,7 @@ public:
 	{
 		init();
 		//StartGame();
+		srand(time(0));
 		DisplayBoard();
 		DrawToken();
 
@@ -895,11 +921,16 @@ public:
 		do
 		{
 			DisplayPlayerMsg();
+			PrintTokenAtS_PTurn();
 			dice.rolladice();
 			DisplayDiceNo();
 			int SelectBoxIndex;
 			if (!canContinue())
 			{
+				outtextxy(750, 65, "chal hun koe nahi agli dafa sahi");
+				Sleep(1000 * 7);
+				outtextxy(750, 65, "                                                            ");
+
 				ChangeTurn();
 				dice.reset();
 				continue;
@@ -924,10 +955,10 @@ public:
 
 				} while (isValidSelection(SelectBoxIndex, dice.diceno[bxi],toeknIndexinBox) == false);
 				kuchb++;
-				updateBoard(SelectBoxIndex, dice.diceno[bxi]);
+				updateBoard(SelectBoxIndex, dice.diceno[bxi], toeknIndexinBox);
 				dice.diceno[bxi] = 0;
 			} while (!dice.isempty());
-			outtextxy(750, 65, "                       ");
+			outtextxy(750, 65, "                                                                   ");
 			if (isWin())
 			{
 				WC++;
