@@ -739,6 +739,15 @@ public:
 		}
 	}
 	
+	bool isSpecialBox(int Des)
+	{
+		for(int i=0;i<8;i++)
+		{
+			if(Des==SpecialBoxes[i])
+			return true;
+		}
+		return false;
+	}
 	void updateBoard(int TokenIndex, int DiceNo, int TokkenIndexinDabba)
 	{
 		/*
@@ -807,20 +816,34 @@ public:
 				}
 			}
 			box[TokenIndex].dabba[TokkenIndexinDabba]->addSteps(DiceNo);
+			
 			if (box[TokenIndex].dabba[TokkenIndexinDabba]->StepsTaken() > box[TokenIndex].dabba[TokkenIndexinDabba]->getJumpStep())
 			{
 				Des = box[TokenIndex].dabba[TokkenIndexinDabba]->JumpIndex+(box[TokenIndex].dabba[TokkenIndexinDabba]->StepsTaken()-box[TokenIndex].dabba[TokkenIndexinDabba]->getJumpStep()-1);
 			}
-			else if (box[Des].dabba.size()!=0)//box[Des].dabba[TokkenIndexinDabba]
-			{
-				Grid[Grid[Des]->getHomeIndex()] = Grid[Des];
-				// Draw Token at Grid[Des]->getHomeIndex()
-				Position P = C[Grid[Des]->getHomeIndex()].getcellcenter(C[Grid[Des]->getHomeIndex()].getTL(),
-					C[Grid[Des]->getHomeIndex()].getBR());
-				Grid[Des]->DrawToken(P);
-				Grid[Des]->changeHomeStatus();
+			
 
-				box[box[Des].dabba[0]->getHomeIndex()].dabba.push_back(box[Des].dabba[0]);
+			if (box[Des].dabba.size()>0)//box[Des].dabba[TokkenIndexinDabba]
+			{
+				if(isSpecialBox(Des) || Grid[des]->dabba[0]->getcolor() == turnColor)
+				{
+					//box[des].dabba.push_back(box[TokenIndex].dabba[TokkenIndexinDabba]);
+				}
+				else
+				{
+					for(int i=0;i<box[Des].dabba.size();++i)
+					{
+						box[box[Des].dabba[i]->getHomeIndex()].dabba.push_back(box[Des].dabba[i]);
+						Position P = C[box[Des].dabba[i]->getHomeIndex()].getcellcenter(C[box[Des].dabba[i]->getHomeIndex()].getTL(),
+						C[box[Des].dabba[i]->getHomeIndex()].getBR());
+						box[Des].dabba[i]->DrawToken(P);
+						box[Des].dabba[i]->changeHomeStatus();
+						box[Des].dabba.erase(box[Des].dabba.begin()+i);
+					}
+					//box[Des].dabba.push_back(box[TokenIndex].dabba[TokkenIndexinDabba]);
+					// Draw Token at Grid[Des]->getHomeIndex()
+					
+				}
 			}
 			if (box[TokenIndex].dabba[TokkenIndexinDabba]->StepsTaken()==56)
 			{
@@ -831,11 +854,11 @@ public:
 						Des=72+i;
 				}
 			}
-			Grid[Des]=box[TokenIndex].dabba[TokkenIndexinDabba];
+			box[des].dabba.push_back(box[TokenIndex].dabba[TokkenIndexinDabba]);
 			// Draw Token at Des;
 			Position P = C[Des].getcellcenter(C[Des].getTL(),C[Des].getBR());
-			Grid[Des]->DrawToken(P);
-			box[TokenIndex].dabba[TokkenIndexinDabba]=nullptr;
+			box[Des].dabba[0]->DrawToken(P);
+			box[TokenIndex].dabba.erase(box[TokenIndex].dabba.begin()+TokkenIndexinDabba);
 			// Draw Cell[TokenIndex]
 			C[TokenIndex].draw();
 		}
