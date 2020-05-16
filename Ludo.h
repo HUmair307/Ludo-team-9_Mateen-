@@ -12,7 +12,8 @@ using namespace std;
 class Ludo :public Player,public Cell
 {
 protected:
-	Token** Grid;
+	Grid* box = new Grid[92];
+
 	Player** Players;
 	//Player Players[MaxPlayers];
 	int NoOfPlayers, Turn, MaxNoSteps, WC;
@@ -25,6 +26,7 @@ protected:
 	Dice dice;
 	int HCN = 76;
 	vector <int> WinPlayers;
+	int SpecialBoxes[8] = { 34,42,47,3,8,16,21,29 };
 	/*
 	 YELLOW
 									          
@@ -607,9 +609,9 @@ public:
 
 	void init()
 	{
-		Grid = new Token*[92];
-		for(int i=0;i<92;++i)
-			Grid[i]=nullptr;
+		//Grid = new Token*[92];
+		/*for(int i=0;i<92;++i)
+			Grid[i]=nullptr;*/
 		NoOfPlayers = 4;
 		Turn = 0;
 		turncolor = GREEN;
@@ -651,7 +653,9 @@ public:
 			{
 				for (int k = 0; k < 4; k++)
 				{
-					Grid[76 + m] = Players[i]->PlayerTokens[k];
+				//	box.dabba[76 + m].push_back();
+					//box->dabba[76 + m].push_back();
+					box[76 + m].dabba.push_back(Players[i]->PlayerTokens[k]);
 					m++;
 				}
 			}
@@ -672,20 +676,32 @@ public:
 	}
 	
 	
-	bool isValidSelection(int CellIndex, int DiceNo)
+	int tokenChoseninBox(int CellIndex)
 	{
-		if (Grid[CellIndex] != NULL && Grid[CellIndex]->getColor() == turncolor)
+			int i;
+			for (i = 0; i < box[CellIndex].dabba.size; ++i)
+			{
+				if (box[CellIndex].dabba[i]->getColor() == turncolor)
+					return i;
+			}
+			return -1;
+	}
+	bool isValidSelection(int CellIndex, int DiceNo, int& TokenIndex)
+	{
+		if (box[CellIndex].dabba.size() != 0) //&& box[CellIndex].dabba[TokenIndex]->getColor() == turncolor)
 		{
-			if (Grid[CellIndex]->isAtHome())
+			TokenIndex = tokenChoseninBox(CellIndex);
+			if (TokenIndex == -1)
+				return false;
+			if (box[CellIndex].dabba[TokenIndex]->isAtHome())
 			{
 				if (DiceNo == 6)
 					return true;
 				else
 					return false;
 			}
-			if (Grid[CellIndex]->StepsTaken() + DiceNo <= 56)
+			if (box[CellIndex].dabba[TokenIndex]->StepsTaken() + DiceNo <= 56)
 				return true;
-			return false;
 		}
 		return false;
 	}
@@ -713,29 +729,70 @@ public:
 	}
 	void DrawToken()
 	{
-		for (int  i = 0; i < 92; i++)
+		for (int  i = 76; i < 92; i++)
 		{
-			if (Grid[i]!=NULL)
+			if (box[i].dabba.size()!=0)
 			{
 				Position P = C[i].getcellcenter(C[i].getTL(), C[i].getBR());
-				Grid[i]->DrawToken(P);
+				box[i].dabba[0]->DrawToken(P);
 			}
 		}
 	}
 	
-	void updateBoard(int TokenIndex, int DiceNo)
+	void updateBoard(int TokenIndex, int DiceNo, int TokkenIndexinDabba)
 	{
-		if (Grid[TokenIndex]->isAtHome())
+		/*
+		if (Grid[des]->dabba.size != 0)
+	{
+		if (isDesBoxSpecial())
+			continue;
+		else if (Grid[des]->dabba[0]->getcolor() == turnColor)
+			continue;
+		else
 		{
-			Grid[Grid[TokenIndex]->getInitialLocation()]=Grid[TokenIndex];
+			// Copy code to make that tokken go home;   KILL CONDITION
+		}
+	}
+
+
+	Grid[des]->dabba.push_back();
+	
+	if (Grid[Sel]->dabba.size == 1)
+	{
+		Grid[Sel]->dabba.empty();
+	}
+	else
+	{
+		if (isDesBoxSpecial())
+		{
+			int i;
+			for ( i= 0; i < Grid[Sel]->dabba.size; ++i)
+			{
+				if (Grid[Sel]->dabba[i]->getcolor() == turnColor)
+					break;
+			}
+			Grid[Sel]->dabba.erase(Grid[Sel]->dabba.begin() + i);
+		}
+		else
+		{
+			Grid[Sel]->dabba.pop();
+
+		}
+	}
+	pushback();
+*/
+		if (box[TokenIndex].dabba[TokkenIndexinDabba]->isAtHome())
+		{
+			box[box[TokenIndex].dabba[TokkenIndexinDabba]->getInitialLocation()].dabba.push_back(box[TokenIndex].dabba[TokkenIndexinDabba]);
 			// Draw Token at Grid[TokenIndex]->getInitialLocation()
 			//C[TokenIndex].draw();
-			Grid[Grid[TokenIndex]->getInitialLocation()];
-			Position P=C[Grid[TokenIndex]->getInitialLocation()].getcellcenter(C[Grid[TokenIndex]->getInitialLocation()].getTL(),
-				C[Grid[TokenIndex]->getInitialLocation()].getBR());
-			Grid[TokenIndex]->DrawToken(P);
-			Grid[TokenIndex]->changeHomeStatus();
-			Grid[TokenIndex]= nullptr;
+			
+			//Grid[Grid[TokenIndex]->getInitialLocation()];
+			Position P=C[box[TokenIndex].dabba[TokkenIndexinDabba]->getInitialLocation()].getcellcenter(C[box[TokenIndex].dabba[TokkenIndexinDabba]->getInitialLocation()].getTL(),
+				C[box[TokenIndex].dabba[TokkenIndexinDabba]->getInitialLocation()].getBR());
+			box[TokenIndex].dabba[TokkenIndexinDabba]->DrawToken(P);
+			box[TokenIndex].dabba[TokkenIndexinDabba]->changeHomeStatus();
+			box[TokenIndex].dabba.erase(box[TokenIndex].dabba.begin()+TokkenIndexinDabba);
 			C[TokenIndex].draw();
 
 		}
@@ -749,12 +806,12 @@ public:
 					Des-=52;
 				}
 			}
-			Grid[TokenIndex]->addSteps(DiceNo);
-			if (Grid[TokenIndex]->StepsTaken() > Grid[TokenIndex]->getJumpStep())
+			box[TokenIndex].dabba[TokkenIndexinDabba]->addSteps(DiceNo);
+			if (box[TokenIndex].dabba[TokkenIndexinDabba]->StepsTaken() > box[TokenIndex].dabba[TokkenIndexinDabba]->getJumpStep())
 			{
-				Des = Grid[TokenIndex]->JumpIndex+(Grid[TokenIndex]->StepsTaken()-Grid[TokenIndex]->getJumpStep()-1);
+				Des = box[TokenIndex].dabba[TokkenIndexinDabba]->JumpIndex+(box[TokenIndex].dabba[TokkenIndexinDabba]->StepsTaken()-box[TokenIndex].dabba[TokkenIndexinDabba]->getJumpStep()-1);
 			}
-			else if (Grid[Des]!=nullptr)
+			else if (box[Des].dabba.size()!=0)//box[Des].dabba[TokkenIndexinDabba]
 			{
 				Grid[Grid[Des]->getHomeIndex()] = Grid[Des];
 				// Draw Token at Grid[Des]->getHomeIndex()
@@ -762,8 +819,10 @@ public:
 					C[Grid[Des]->getHomeIndex()].getBR());
 				Grid[Des]->DrawToken(P);
 				Grid[Des]->changeHomeStatus();
+
+				box[box[Des].dabba[0]->getHomeIndex()].dabba.push_back(box[Des].dabba[0]);
 			}
-			if (Grid[TokenIndex]->StepsTaken()==56)
+			if (box[TokenIndex].dabba[TokkenIndexinDabba]->StepsTaken()==56)
 			{
 				Players[Turn]->TokenReachDest++;
 				for(int i=0;i<4;i++)
@@ -772,11 +831,11 @@ public:
 						Des=72+i;
 				}
 			}
-			Grid[Des]=Grid[TokenIndex];
+			Grid[Des]=box[TokenIndex].dabba[TokkenIndexinDabba];
 			// Draw Token at Des;
 			Position P = C[Des].getcellcenter(C[Des].getTL(),C[Des].getBR());
 			Grid[Des]->DrawToken(P);
-			Grid[TokenIndex]=nullptr;
+			box[TokenIndex].dabba[TokkenIndexinDabba]=nullptr;
 			// Draw Cell[TokenIndex]
 			C[TokenIndex].draw();
 		}
@@ -823,6 +882,7 @@ public:
 				continue;
 			}
 			int kuchb = 0;
+			int toeknIndexinBox;
 			do 
 			{
 				DisplayDiceNo();
@@ -835,10 +895,11 @@ public:
 
 						SelectBoxIndex = choosingtoken();
 					} while (SelectBoxIndex == -1);
-					if (isValidSelection(SelectBoxIndex, dice.diceno[bxi]) == false)
+					//toeknIndexinBox = tokenChoseninBox(SelectBoxIndex);
+					if (isValidSelection(SelectBoxIndex, dice.diceno[bxi], toeknIndexinBox) == false)
 						outtextxy(750, 65, "oye sahi km kr bhai");
 
-				} while (isValidSelection(SelectBoxIndex, dice.diceno[bxi]) == false);
+				} while (isValidSelection(SelectBoxIndex, dice.diceno[bxi],toeknIndexinBox) == false);
 				kuchb++;
 				updateBoard(SelectBoxIndex, dice.diceno[bxi]);
 				dice.diceno[bxi] = 0;
