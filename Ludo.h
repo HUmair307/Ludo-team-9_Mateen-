@@ -214,7 +214,7 @@ public:
 		C[HCN].setcellPos(Position(607, 451), Position(653, 497), LIGHTBLUE); HCN++;
 		drawpoly(5, B);
 		int y[10] = { 451,607,497,607,497,653,451,653,451,607 };// points of home cell of green 
-		C[HCN].setcellPos(Position(497, 653), Position(451, 607), LIGHTBLUE); HCN++;
+		C[HCN].setcellPos(Position(451, 607), Position(497, 653), LIGHTBLUE); HCN++;
 		drawpoly(5, y);
 		int z[10] = { 607,607,653,607,653,653,607,653,607,607 };// points of home cell of green 
 		C[HCN].setcellPos(Position(607, 607), Position(653, 653), LIGHTBLUE); HCN++;
@@ -264,7 +264,7 @@ public:
 // RED HAS ENDED
 		
 
-
+		// triangles in the middle
 		int T1[8] = {276,276,414,276,345,345,276,276 };
 		C[73].setcellPos(Position(345*2, 282*2), Position(0, 0), DARKGRAY);
 
@@ -510,19 +510,15 @@ public:
 		}
 
 		// arraay ka index for dice cell is 92,93,94;
+		//// dice roll waly dabby
 		int K = 92;
-		int db1[10] = { 800,150,846,150,846,196,800,196,800,150 };
-		drawpoly(5, db1);
-		C[K].setcellPos(Position(800, 150), Position(846, 196), BLACK); K++;
-
-		int db2[10] = { 846,150,892,150,892,196,846,196,846,150 };
-		drawpoly(5, db2);
-		C[K].setcellPos(Position(846, 150), Position(892, 196), BLACK); K++;
-
-		int db3[10] = { 892,150,938,150,938,196,892,196,892,150 };
-		drawpoly(5, db3);
-		C[K].setcellPos(Position(892, 150), Position(938, 196), BLACK); 
-
+		for (int j = 0; j <= 92; j+=46)
+		{
+			int db1[10] = { 800+j,150,846+j,150,846+j,196,800+j,196,800+j,150 };
+			drawpoly(5, db1);
+			C[K].setcellPos(Position(800+j, 150), Position(846+j, 196), BLACK);
+			K++;
+		}
 		
 	}
 	int DiceIndex()
@@ -578,12 +574,6 @@ public:
 	}
 	void inttocolor()
 	{
-		/*
-				Players[3] = new Player(RED);
-		Players[0]= new Player(GREEN);
-		Players[1]= new Player(DARKGRAY);
-		Players[2]= new Player(BLUE);
-		*/
 		if (Turn == 0)
 		{
 			turncolor = GREEN;
@@ -602,16 +592,9 @@ public:
 		}
 		
 	}
-	void StartGame()
-	{
-		// Why do we need this function when we already have init..?
-	}
 
 	void init()
 	{
-		//Grid = new Token*[92];
-		/*for(int i=0;i<92;++i)
-			Grid[i]=nullptr;*/
 		NoOfPlayers = 4;
 		Turn = 0;
 		turncolor = GREEN;
@@ -750,53 +733,9 @@ public:
 	}
 	void updateBoard(int TokenIndex, int DiceNo, int TokkenIndexinDabba)
 	{
-		/*
-		if (Grid[des]->dabba.size != 0)
-	{
-		if (isDesBoxSpecial())
-			continue;
-		else if (Grid[des]->dabba[0]->getcolor() == turnColor)
-			continue;
-		else
-		{
-			// Copy code to make that tokken go home;   KILL CONDITION
-		}
-	}
-
-
-	Grid[des]->dabba.push_back();
-	
-	if (Grid[Sel]->dabba.size == 1)
-	{
-		Grid[Sel]->dabba.empty();
-	}
-	else
-	{
-		if (isDesBoxSpecial())
-		{
-			int i;
-			for ( i= 0; i < Grid[Sel]->dabba.size; ++i)
-			{
-				if (Grid[Sel]->dabba[i]->getcolor() == turnColor)
-					break;
-			}
-			Grid[Sel]->dabba.erase(Grid[Sel]->dabba.begin() + i);
-		}
-		else
-		{
-			Grid[Sel]->dabba.pop();
-
-		}
-	}
-	pushback();
-*/
 		if (box[TokenIndex].dabba[TokkenIndexinDabba]->isAtHome())
 		{
 			box[box[TokenIndex].dabba[TokkenIndexinDabba]->getInitialLocation()].dabba.push_back(box[TokenIndex].dabba[TokkenIndexinDabba]);
-			// Draw Token at Grid[TokenIndex]->getInitialLocation()
-			//C[TokenIndex].draw();
-			
-			//Grid[Grid[TokenIndex]->getInitialLocation()];
 			Position P=C[box[TokenIndex].dabba[TokkenIndexinDabba]->getInitialLocation()].getcellcenter(C[box[TokenIndex].dabba[TokkenIndexinDabba]->getInitialLocation()].getTL(),
 				C[box[TokenIndex].dabba[TokkenIndexinDabba]->getInitialLocation()].getBR());
 			box[TokenIndex].dabba[TokkenIndexinDabba]->DrawToken(P);
