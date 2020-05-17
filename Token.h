@@ -95,7 +95,8 @@ public:
 		if (Homestatus)
 			Homestatus = false;
 		else
-			Homestatus = true;
+			{Homestatus = true;
+                        NoOfStepsTaken = 0;}
 	}
 	
 };
