@@ -266,13 +266,12 @@ public:
 
 		// triangles in the middle
 		int T1[8] = {276,276,414,276,345,345,276,276 };
-		C[73].setcellPos(Position(345*2, 282*2), Position(0, 0), DARKGRAY);
-
+		C[73].setcellPos(Position(345*2, 295*2), Position(0, 0), DARKGRAY);
+		
 		setfillstyle(SOLID_FILL, DARKGRAY);
 		fillpoly(4, T1);
 		int T2[8] = { 414,276,414,414,345,345,414,276 };
 		C[74].setcellPos(Position(395*2, 345*2), Position(0, 0), BLUE);
-
 		setfillstyle(SOLID_FILL, BLUE);
 		fillpoly(4, T2);
 		int T3[8] = { 345,345,414,414,276,414,345,345 };
@@ -281,7 +280,8 @@ public:
 		setfillstyle(SOLID_FILL, RED);
 		fillpoly(4, T3);
 		int T4[8] = { 276,276,345,345,276,414,276,276 };
-		C[72].setcellPos(Position(282*2, 345*2), Position(0, 0), GREEN);
+		C[72].setcellPos(Position(295*2, 345*2), Position(0, 0), GREEN);
+	
 		setfillstyle(SOLID_FILL, GREEN);
 
 		fillpoly(4, T4);
@@ -519,6 +519,8 @@ public:
 			C[K].setcellPos(Position(800+j, 150), Position(846+j, 196), BLACK);
 			K++;
 		}
+
+
 		
 	}
 	int DiceIndex()
@@ -882,6 +884,7 @@ public:
 
 				do
 				{
+					outtextxy(750, 65, "                                                      ");
 					bxi = DiceIndex();
 					do
 					{
