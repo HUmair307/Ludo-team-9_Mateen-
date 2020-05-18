@@ -99,8 +99,8 @@ public:
 		}
 		else
 		{
-			++Turn;
-			if (Turn == NoOfPlayers)
+			Turn += 2;
+			if (Turn == 4)
 				Turn = 0;
 		}
 			
@@ -637,7 +637,7 @@ public:
 
 	void init()
 	{
-		cout << "how many no. of players, do you want? /n";
+		cout << "how many no. of players, do you want? \n";
 		cin >> NoOfPlayers;
 		Turn = 0;
 		turncolor = GREEN;
