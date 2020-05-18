@@ -9,8 +9,10 @@ public:
 	int diceno[3] = { 0 };
 	void reset()
 	{
-		for (auto a : diceno)
-			*diceno = 0;
+		for (int i = 0; i < 3; i++)
+		{
+			diceno[i] = 0;
+		}
 	}
 	bool isempty()
 	{
