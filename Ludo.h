@@ -620,7 +620,7 @@ public:
 		{
 			turncolor = GREEN;
 		}
-		else if(Turn==1)
+		else if (Turn == 1)
 		{
 			turncolor = DARKGRAY;
 		}
@@ -632,7 +632,7 @@ public:
 		{
 			turncolor = RED;
 		}
-		
+
 	}
 
 	void init()
