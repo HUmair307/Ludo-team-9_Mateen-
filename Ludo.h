@@ -76,23 +76,34 @@ public:
 
 	void ChangeTurn()
 	{
-		bool Continue = true;
-		do
+		if (NoOfPlayers ==4 )
 		{
-			Continue = false;
+			bool Continue = true;
+			do
+			{
+				Continue = false;
+				++Turn;
+				if (Turn == NoOfPlayers)
+					Turn = 0;
+				for (int i = 0; i < WinPlayers.size(); i++)
+				{
+					if (Turn == WinPlayers[i])
+					{
+						Continue = true; break;
+					}
+
+				}
+
+			} while (Continue);
+
+		}
+		else
+		{
 			++Turn;
 			if (Turn == NoOfPlayers)
 				Turn = 0;
-			for(int i=0;i<WinPlayers.size();i++)
-			{
-				if (Turn == WinPlayers[i])
-				{
-					Continue = true; break;
-				}
-					
-			}
+		}
 			
-		}while(Continue);
 		inttocolor();
 	}
 
