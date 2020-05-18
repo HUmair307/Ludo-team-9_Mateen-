@@ -145,6 +145,29 @@ public:
 	
 	void DisplayResult()
 	{
+		string wincolor;
+		int x;
+		for (int i = 0; i < WinPlayers.size(); ++i)
+		{
+			x = WinPlayers[i];
+			if (x == 0)
+			{
+				wincolor = "green";
+			}
+			else if (x == 1)
+			{
+				wincolor = "grey";
+			}
+			else if (x == 2)
+			{
+				wincolor = "blue";
+			}
+			else
+			{
+				wincolor = "red";
+			}
+			cout << wincolor << " has got " << i + 1 << "position\n";
+		}
 		//Should we display "Player Blue Won"???? And at which place?
 		// we can increase the init window size and can show both dice roll and win msg there.
 	}
@@ -614,7 +637,8 @@ public:
 
 	void init()
 	{
-		NoOfPlayers = 4;
+		cout << "how many no. of players, do you want? /n";
+		cin >> NoOfPlayers;
 		Turn = 0;
 		turncolor = GREEN;
 		MaxNoSteps = 55;
