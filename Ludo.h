@@ -76,18 +76,23 @@ public:
 
 	void ChangeTurn()
 	{
+		bool Continue = true;
 		do
 		{
+			Continue = false;
 			++Turn;
 			if (Turn == NoOfPlayers)
 				Turn = 0;
 			for(int i=0;i<WinPlayers.size();i++)
 			{
-				if (Turn==WinPlayers[i])
-					continue;
+				if (Turn == WinPlayers[i])
+				{
+					Continue = true; break;
+				}
+					
 			}
-			break;
-		}while(true);
+			
+		}while(Continue);
 		inttocolor();
 	}
 
@@ -560,6 +565,7 @@ public:
 			string temp_str = strs.str();
 			char* char_type = (char*)temp_str.c_str();
 			outtextxy(P.x, P.y, char_type);
+			
 		}
 
 		
