@@ -54,7 +54,13 @@ public:
 	Ludo(){}
 	
 
-
+	void InitSpecific()
+	{
+		for(int i=0;i<4;++i)
+		{
+			
+		}
+	}
 	void InitBoard()
 	{
 			// We don't really need this?
@@ -811,7 +817,13 @@ public:
 			
 			if (box[TokenIndex].dabba[TokkenIndexinDabba]->StepsTaken() > box[TokenIndex].dabba[TokkenIndexinDabba]->getJumpStep())
 			{
-				Des = box[TokenIndex].dabba[TokkenIndexinDabba]->JumpIndex+(box[TokenIndex].dabba[TokkenIndexinDabba]->StepsTaken()-box[TokenIndex].dabba[TokkenIndexinDabba]->getJumpStep()-1);
+				if (box[TokenIndex].dabba[TokkenIndexinDabba]->hasKilled)
+					Des = box[TokenIndex].dabba[TokkenIndexinDabba]->JumpIndex+(box[TokenIndex].dabba[TokkenIndexinDabba]->StepsTaken()-box[TokenIndex].dabba[TokkenIndexinDabba]->getJumpStep()-1);
+				else
+				{
+					int StepsUpdate = box[TokenIndex].dabba[TokkenIndexinDabba]->StepsTaken()-box[TokenIndex].dabba[TokkenIndexinDabba]->getJumpStep()-2;
+					box[TokenIndex].dabba[TokkenIndexinDabba]->ChangeSteps(StepsUpdate);
+				}
 			}
 			
 
@@ -823,6 +835,7 @@ public:
 				}
 				else
 				{
+					box[box[Des].dabba[i]->hasKilled=true;
 					for(int i=0;i<box[Des].dabba.size();++i)
 					{
 						box[box[Des].dabba[i]->getHomeIndex()].dabba.push_back(box[Des].dabba[i]);
