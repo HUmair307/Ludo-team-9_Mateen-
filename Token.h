@@ -17,7 +17,7 @@ public:
 	int JumpStep;
 	int JumpIndex;
 public:
-
+	bool hasKilled;
 	Token()
 	{
 
@@ -33,6 +33,7 @@ public:
 		Homestatus = true;
 		JumpStep = 50;
 		JumpIndex = Jumpto;
+		hasKilled=false;
 	}
 	
 	virtual void DrawToken(Position P)
@@ -54,6 +55,10 @@ public:
 		return JumpIndex;
 	}
 	
+	void ChangeSteps(int Steps)
+	{
+		NoOfStepsTaken = Steps;
+	}
 	int getJumpStep()
 	{
 		return JumpStep;

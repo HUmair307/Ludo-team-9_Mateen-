@@ -20,7 +20,7 @@ protected:
 	colors turncolor;
 	int DU;
 	int NOC=0;// number of cells
-	Cell C[95];
+	Cell C[96];
 	Position P;
 	colors cc = WHITE;
 	Dice dice;
@@ -54,7 +54,13 @@ public:
 	Ludo(){}
 	
 
-
+	void InitSpecific()
+	{
+		for(int i=0;i<4;++i)
+		{
+			
+		}
+	}
 	void InitBoard()
 	{
 			// We don't really need this?
@@ -551,7 +557,7 @@ public:
 		// arraay ka index for dice cell is 92,93,94;
 		//// dice roll waly dabby
 		int K = 92;
-		for (int j = 0; j <= 92; j+=46)
+		for (int j = 0; j <= 138; j+=46)
 		{
 			int db1[10] = { 800+j,150,846+j,150,846+j,196,800+j,196,800+j,150 };
 			drawpoly(5, db1);
@@ -562,6 +568,16 @@ public:
 
 		
 	}
+	void cheat()
+	{
+
+			cout << "Which three numbers do u want";
+			for (int i = 0; i < 3; i++)
+				cin >> dice.diceno[i];
+			//return true;
+		//return false;
+	}
+	
 	int DiceIndex()
 	{
 		Position P;
@@ -580,6 +596,8 @@ public:
 						break;
 				}
 			}
+			if (C[95].BoxConfirmation(P.x, P.y))
+				return 95;
 		} 
 	}
 
@@ -799,7 +817,13 @@ public:
 			
 			if (box[TokenIndex].dabba[TokkenIndexinDabba]->StepsTaken() > box[TokenIndex].dabba[TokkenIndexinDabba]->getJumpStep())
 			{
-				Des = box[TokenIndex].dabba[TokkenIndexinDabba]->JumpIndex+(box[TokenIndex].dabba[TokkenIndexinDabba]->StepsTaken()-box[TokenIndex].dabba[TokkenIndexinDabba]->getJumpStep()-1);
+				if (box[TokenIndex].dabba[TokkenIndexinDabba]->hasKilled)
+					Des = box[TokenIndex].dabba[TokkenIndexinDabba]->JumpIndex+(box[TokenIndex].dabba[TokkenIndexinDabba]->StepsTaken()-box[TokenIndex].dabba[TokkenIndexinDabba]->getJumpStep()-1);
+				else
+				{
+					int StepsUpdate = box[TokenIndex].dabba[TokkenIndexinDabba]->StepsTaken()-box[TokenIndex].dabba[TokkenIndexinDabba]->getJumpStep()-2;
+					box[TokenIndex].dabba[TokkenIndexinDabba]->ChangeSteps(StepsUpdate);
+				}
 			}
 			
 
@@ -811,6 +835,7 @@ public:
 				}
 				else
 				{
+					box[box[Des].dabba[i]->hasKilled=true;
 					for(int i=0;i<box[Des].dabba.size();++i)
 					{
 						box[box[Des].dabba[i]->getHomeIndex()].dabba.push_back(box[Des].dabba[i]);
@@ -907,16 +932,24 @@ public:
 			dice.rolladice();
 			DisplayDiceNo();
 			int SelectBoxIndex;
+			bool Cheating=true;
+			bxi = DiceIndex();
+			if (bxi == 95)
+			{
+				cheat();
+				//bxi = DiceIndex();
+				Cheating = true;
+			}
 			if (!canContinue())
 			{
 				outtextxy(750, 65, "chal hun koe nahi agli dafa sahi");
 				Sleep(1000 * 7);
 				outtextxy(750, 65, "                                                            ");
-
 				ChangeTurn();
 				dice.reset();
 				continue;
 			}
+			
 			int kuchb = 0;
 			int toeknIndexinBox;
 			do 
@@ -927,6 +960,7 @@ public:
 				{
 					outtextxy(750, 65, "                                                      ");
 					bxi = DiceIndex();
+					
 					do
 					{
 
