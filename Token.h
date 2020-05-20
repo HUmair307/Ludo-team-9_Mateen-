@@ -55,6 +55,10 @@ public:
 		return JumpIndex;
 	}
 	
+	void ChangeSteps(int Steps)
+	{
+		NoOfStepsTaken = Steps;
+	}
 	int getJumpStep()
 	{
 		return JumpStep;
