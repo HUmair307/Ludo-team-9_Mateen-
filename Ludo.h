@@ -835,7 +835,7 @@ public:
 				}
 				else
 				{
-					box[box[Des].dabba[i]->hasKilled=true;
+					box[TokenIndex].dabba[TokkenIndexinDabba]->hasKilled=true;
 					for(int i=0;i<box[Des].dabba.size();++i)
 					{
 						box[box[Des].dabba[i]->getHomeIndex()].dabba.push_back(box[Des].dabba[i]);
