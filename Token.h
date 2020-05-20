@@ -17,7 +17,7 @@ public:
 	int JumpStep;
 	int JumpIndex;
 public:
-
+	bool hasKilled;
 	Token()
 	{
 
@@ -33,6 +33,7 @@ public:
 		Homestatus = true;
 		JumpStep = 50;
 		JumpIndex = Jumpto;
+		hasKilled=false;
 	}
 	
 	virtual void DrawToken(Position P)
