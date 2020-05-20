@@ -101,7 +101,8 @@ public:
 			Homestatus = false;
 		else
 			{Homestatus = true;
-                        NoOfStepsTaken = 0;}
+                        NoOfStepsTaken = 0;
+			hasKilled= false;}
 	}
 	
 };
